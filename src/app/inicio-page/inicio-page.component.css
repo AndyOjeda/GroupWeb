@@ -1,0 +1,85 @@
+.primary-text{
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.secondary-text{
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.third-text{
+    font-family: "DM Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+}
+.color-white{
+    color: #f0f0f0;
+}
+.color-silver{
+    color: #c7c4c1;
+}
+.color-raisin{
+    color: #373442;
+}
+.color-khaki{
+    color: #a69a8e;
+}
+.color-gray{
+    color: #888987;
+}
+.color-black{
+    color: #19191a;
+}
+.img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+
+.card{
+    width: 50rem; 
+    height: 30rem; 
+    border-radius: 0px;
+}
+
+.card-1{
+    background-color: #BFBFBF ;
+}
+
+.card-2{
+    background-color: #425052 ;
+}
+
+.card-3{
+    background-color: #B1CBCF ;
+}
+
+.card-body{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn{
+    background-color: white; /* Color de fondo del botón */
+    border: none;
+    color: #c7c4c1;
+    border-radius: 20px;
+    padding: 5px 15px;
+}
+
+.btn:hover{
+    background-color: transparent;
+  color: white;
+  border: none;
+}
+
