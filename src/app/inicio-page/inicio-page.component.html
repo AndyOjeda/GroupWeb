@@ -1,13 +1,15 @@
-<div class="d-flex wrap justify-content-center" style="margin-left: 100px; margin-right: 100px;">
-  <div class="card img card-1">
-    <img src="../../assets/img/Celular.png" class="card-img-top img" alt="..." style="width: 20rem; height: 15rem;">
+<!-- 3 CARDS INICIALES -->
+
+<div class="d-flex wrap justify-content-center">
+  <div class="card img card-1" style="height: 35rem;">
+    <img src="../../assets/img/Celular.png" class="card-img-top img" alt="..." style="width: 25rem; height: 23rem">
     <div class="card-body">
       <h5 class="card-title primary-text color-white">Tecnología</h5>
       <a href="#" class="btn btn-primary secondary-text">Explora Aquí</a>
     </div>
   </div>
 
-  <div class="card img card-2">
+  <div class="card img card-2" style="height: 35rem;">
     <img src="../../assets/img/House.png" class="card-img-top img" alt="...">
     <div class="card-body">
       <h5 class="card-title primary-text color-white">Finca Raíz</h5>
@@ -15,7 +17,7 @@
     </div>
   </div>
 
-  <div class="card img card-3">
+  <div class="card img card-3" style="height: 35rem;">
     <img src="../../assets/img/Car.png" class="card-img-top img" alt="...">
     <div class="card-body">
       <h5 class="card-title primary-text color-white">Compra-Venta</h5>
@@ -24,6 +26,172 @@
   </div>
 </div>
 
-<h2>Recomendados</h2>
+<!-- TITULO RECOMENDADOS -->
+
+<div class="d-flex justify-content-center" style="margin: 20px;">
+  <h2 style="font-size: 5rem;">Recomendados</h2>
+</div>
+
+<!-- <div class="card">
+  <p-carousel
+      [value]="products"
+      [numVisible]="3"
+      [numScroll]="3"
+      [circular]="false"
+      [responsiveOptions]="responsiveOptions">
+          <ng-template let-product pTemplate="item">
+              <div class="border-1 surface-border border-round m-2 p-3">
+                  <div class="mb-3">
+                      <div class="relative mx-auto">
+                          <img
+                              src="https://primefaces.org/cdn/primeng/images/demo/product/{{ product.image }}"
+                              [alt]="product.name"
+                              class="w-full border-round" />
+                          <p-tag
+                              [value]="product.inventoryStatus"
+                              [severity]="getSeverity(product.inventoryStatus)"
+                              class="absolute"
+                              [ngStyle]="{ 'left.px': 5, 'top.px': 5 }" />
+                      </div>
+                  </div>
+                  <div class="mb-3 font-medium">
+                      {{ product.name }}
+                  </div>
+                  <div class="flex justify-content-between align-items-center">
+                  <div class="mt-0 font-semibold text-xl">
+                      {{ '$' + product.price }}
+                  </div>
+                      <span>
+                          <p-button icon="pi pi-heart" severity="secondary" [outlined]="true" />
+                          <p-button icon="pi pi-shopping-cart" styleClass="ml-2" />
+                      </span>
+                  </div>
+              </div>
+          </ng-template>
+  </p-carousel>
+</div> -->
+<div class="d-flex wrap justify-content-between">
+
+  <p-card header="Iphone 15 (128 GB)" subheader="$3.500.000" [style]="{ width: '360px'}">
+    <ng-template pTemplate="header">
+        <img alt="Card" src="../../assets/img/IPHONE.png" />
+    </ng-template>
+      <div class="d-flex wrap">
+        <button class="redondo"></button>
+        <button class="redondo"></button>
+        <button class="redondo"></button>
+      </div>
+  </p-card>
+
+  <p-card header="Iphone 15 (128 GB)" subheader="$3.500.000" [style]="{ width: '360px' }">
+    <ng-template pTemplate="header">
+        <img alt="Card" src="../../assets/img/IPHONE.png" />
+    </ng-template>
+      <div class="d-flex wrap">
+        <button class="redondo"></button>
+        <button class="redondo"></button>
+        <button class="redondo"></button>
+      </div>
+  </p-card>
+
+  <p-card header="Iphone 15 (128 GB)" subheader="$3.500.000" [style]="{ width: '360px' }">
+    <ng-template pTemplate="header">
+        <img alt="Card" src="../../assets/img/IPHONE.png" />
+    </ng-template>
+      <div class="d-flex wrap">
+        <button class="redondo"></button>
+        <button class="redondo"></button>
+        <button class="redondo"></button>
+      </div>
+  </p-card>
+
+  <p-card header="Iphone 15 (128 GB)" subheader="$3.500.000" [style]="{ width: '360px' }">
+    <ng-template pTemplate="header">
+        <img alt="Card" src="../../assets/img/IPHONE.png" />
+    </ng-template>
+      <div class="d-flex wrap">
+        <button class="redondo"></button>
+        <button class="redondo"></button>
+        <button class="redondo"></button>
+      </div>
+  </p-card>
+</div>
+
+
+<!-- COMUNICATE CON NOSOTROS -->
+
+<div style="background-color: #BFBFBF ; padding-bottom: 5rem ; margin-top: 5rem;">
+  <div class="d-flex justify-content-center" style="margin-top: 5rem">
+    <h2 style="font-size: 5rem; padding-top: 5rem; margin-bottom: 5rem;">Contáctate con nosotros!</h2>
+  </div>
+
+  <div style="margin-left: 10rem;">
+    <div class="d-flex wrap">
+      <label class="label" for="Name">Nombre Completo:</label>
+      <label class="labelC" for="City">Ciudad:</label><br>
+    </div>
+    <div class="d-flex wrap">
+      <input class="inputG" type="text" id="Name">
+      <input class="inputC" type="text" id="City">
+    </div>
+    <div class="d-flex wrap">
+      <label class="label" for="Project">Empresa o proyecto:</label>
+      <label class="labelO" for="Phone">Télefono:</label><br>
+    </div>
+    <div class="d-flex wrap">
+      <input class="inputG" type="text" id="Project">
+      <input class="inputC"  type="text" id="Phone">
+    </div>
+    <div class="d-flex wrap">
+      <label class="label" for="Email">Correo Electronico:</label>
+      <label class="labelC" for="Product">Producto de Interés:</label><br>
+    </div>
+    <div class="d-flex wrap">
+      <input class="inputG" type="text" id="Email">
+      <input class="inputC" type="text" id="Product">
+    </div>
+    <div class="d-flex justify-content-center">
+      <button style="border: none; margin-top: 5rem; width: 20rem; height: 4rem; border-radius: 20px; font-size: 1.5rem;">ENVIA TUS DATOS </button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+
+<div class="container">
+  <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
+    <div class="col mb-3">
+      <a href="/" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
+        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+      </a>
+      <p class="text-body-secondary">GROUP M&S</p>
+    </div>
+
+    <div class="col mb-3">
+
+    </div>
+
+    <div class="col mb-3">
+      <h5>Bogota DC, Colombia</h5>
+      <ul class="nav flex-column">
+        <h4>Correos Electronicos:</h4>
+        <p><a href="mailto:groupms&#64;gmail.com">groupms&#64;gmail.com</a></p>
+
+      </ul>
+    </div>
+
+    <div class="col mb-3">
+      <h5>Teléfonos de Contacto</h5>
+      <ul class="nav flex-column">
+        <p><a href="tel:+573123456789">+57 3123456789</a></p>
+        <p><a href="tel:+573123456789">+57 3123456789</a></p>
+
+      </ul>
+    </div>
+  </footer>
+</div>
+
+
+
 
 

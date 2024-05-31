@@ -39,13 +39,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
-    
+
+
 }
 
 .card{
-    width: 50rem; 
-    height: 30rem; 
+    width: 50rem;
+    height: 30rem;
     border-radius: 0px;
 }
 
@@ -81,5 +81,68 @@
     background-color: transparent;
   color: white;
   border: none;
+}
+
+.redondo{
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.marginL{
+  margin-left: 5px;
+}
+
+.marginR{
+  margin-right: 5px;
+}
+
+.inputG{
+  width: 55rem;
+  height: 3.5rem;
+  border: none;
+  border-radius: 20px;
+  font-size: 1.5rem;
+}
+
+.inputC{
+  width: 35rem;
+  height: 3.5rem;
+  margin-left: 10rem;
+  border: none;
+  border-radius: 20px;
+  font-size: 1.5rem;
+}
+
+.label{
+  font-family: "DM Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  color: #373442;
+  font-size: 2rem;
+}
+
+.labelC{
+  font-family: "DM Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  color: #373442;
+  font-size: 2rem;
+  margin-left: 50rem;
+}
+
+.labelO{
+  font-family: "DM Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  color: #373442;
+  font-size: 2rem;
+  margin-left: 48.5rem;
 }
 

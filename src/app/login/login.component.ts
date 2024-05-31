@@ -9,11 +9,14 @@ import { ModalDismissReasons, NgbDatepickerModule, NgbModal } from '@ng-bootstra
 import { DropdownModule } from 'primeng/dropdown';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CheckboxModule } from 'primeng/checkbox';
+import {StyleClassModule} from 'primeng/styleclass';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ RouterOutlet, ButtonModule, CardModule, DialogModule, InputTextModule, NgbDatepickerModule, DropdownModule, CommonModule, FormsModule],
+  imports: [ CheckboxModule ,RouterOutlet, ButtonModule, CardModule, DialogModule,
+     InputTextModule, NgbDatepickerModule, DropdownModule, CommonModule, FormsModule, StyleClassModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })

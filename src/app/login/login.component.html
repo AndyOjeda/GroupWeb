@@ -1,7 +1,17 @@
-<h1>Pantalla de login</h1>
+<div class="d-flex justify-content-center" style="margin-top: 5rem;">
+<div class="surface-card p-4 w-full lg:w-6" style="border-radius: 20px; box-shadow: 12px 10px 4px 17px #d3d3d3;">
+  <div class="text-center mb-5">
+      <!-- <img src="assets/images/blocks/logos/hyper.svg" alt="Image" height="50" class="mb-3"> -->
+      <div class="text-900 text-3xl font-medium mb-3">Welcome Back</div>
 
-<form (ngSubmit)="login()">
-  <input type="text" placeholder="Usuario" [(ngModel)]="username">
-  <input type="password" placeholder="Contraseña" [(ngModel)]="password">
-  <button type="submit">Iniciar sesión</button>
-</form>
+  </div>
+  <div class=" d-flex justify-content-center">
+    <form class="form">
+      <input placeholder="Correo Electronico" class="input" type="text">
+      <input placeholder="Contraseña" class="input" type="password">
+
+      <button>Submit</button>
+    </form>
+  </div>
+  </div>
+</div>
