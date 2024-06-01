@@ -45,21 +45,21 @@
 
 }
 
-.card{
+.banner{
   width: 100%;
   height: 30rem;
   border-radius: 0px;
 }
 
-.card-1{
+.banner-1{
   background-color: #BFBFBF ;
 }
 
-.card-2{
+.banner-2{
   background-color: #425052 ;
 }
 
-.card-3{
+.banner-3{
   background-color: #B1CBCF ;
 }
 
@@ -78,14 +78,14 @@ color: white;
 border: none;
 }
 
-.card-title {
+.banner-title {
   text-align: left;
   display: flex;
   font-size: 5rem;
   padding-right: 4rem;
 }
 
-.card-elements{
+.banner-elements{
   display: flex;
   flex-direction:row;
   align-items: center;
@@ -95,6 +95,59 @@ border: none;
   margin: 2rem;
 
 }
+
+.card{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15rem;
+  height: 25rem;
+  padding: 1rem;  
+  padding-top: 3cap;
+}
+
+.card-title{
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1rem;
+  font-weight: bold;
+  font-style: normal;
+  color: #19191a;
+  text-align: center;
+}
+
+.card-info{
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+  font-weight:normal;
+  font-style: normal;
+  color: #888987;
+  text-align: center;
+}
+
+.card-button{
+  background-color: #04AA6D;
+  color: white;
+  border: 2px solid #04AA6D;
+  border-radius: 12px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  display: flex;
+  justify-content: center;
+  padding: 0.6rem;
+  width: 100%;
+  height: 3rem;
+}
+
+.card-button:hover{
+background-color: white;
+color: black;
+border: 2px solid #04AA6D;
+}
+
+.background{
+  background-image: linear-gradient(to left, #B1CBCF, #d9e6e8); 
+}
+
 
 
 
