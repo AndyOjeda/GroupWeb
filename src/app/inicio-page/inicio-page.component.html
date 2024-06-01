@@ -2,26 +2,26 @@
 
 <div class="d-flex wrap justify-content-center">
   <div class="card img card-1">
-    <img src="../../assets/img/Celular.png" class="card-img-top img" alt="..." style="width: 25rem; height: 23rem">
+    <img src="../../assets/img/Celular.png" class="card-img-top img pictures" alt="...">
     <div class="card-body">
       <h5 class="card-title primary-text color-white">Tecnología</h5>
-      <a href="#" class="btn btn-primary secondary-text">Explora Aquí</a>
+      <a href="#" class="btn btn-primary secondary-text btn-text">Explora Aquí</a>
     </div>
   </div>
 
   <div class="card img card-2">
-    <img src="../../assets/img/House.png" class="card-img-top img" alt="...">
+    <img src="../../assets/img/House.png" class="card-img-top img pictures" alt="...">
     <div class="card-body">
       <h5 class="card-title primary-text color-white">Finca Raíz</h5>
-      <a href="#" class="btn btn-primary secondary-text">Explora Aquí</a>
+      <a href="#" class="btn btn-primary secondary-text btn-text">Explora Aquí</a>
     </div>
   </div>
 
   <div class="card img card-3">
-    <img src="../../assets/img/Car.png" class="card-img-top img" alt="...">
+    <img src="../../assets/img/Car.png" class="card-img-top img pictures" alt="...">
     <div class="card-body">
       <h5 class="card-title primary-text color-white">Compra-Venta</h5>
-      <a href="#" class="btn btn-primary secondary-text">Explora Aquí</a>
+      <a href="#" class="btn btn-primary secondary-text btn-text">Explora Aquí</a>
     </div>
   </div>
 </div>
@@ -29,7 +29,7 @@
 <!-- TITULO RECOMENDADOS -->
 
 <div class="d-flex justify-content-center" style="margin: 20px;">
-  <h2 style="font-size: 5rem;">Recomendados</h2>
+  <h2 class="primary-text" style="font-size: 5rem;">Recomendados</h2>
 </div>
 
 <!-- <div class="card">
@@ -122,10 +122,10 @@
 
 <div style="background-color: #BFBFBF ; padding-bottom: 5rem ; margin-top: 5rem;">
   <div class="d-flex justify-content-center" style="margin-top: 5rem">
-    <h2 style="font-size: 5rem; padding-top: 5rem; margin-bottom: 5rem;">Contáctate con nosotros!</h2>
+    <h2 class="primary-text" style="font-size: 5rem; padding-top: 5rem; margin-bottom: 5rem;">Contáctate con nosotros!</h2>
   </div>
 
-  <div style="margin-left: 10rem;">
+  <div style="margin-left: 13rem;">
     <div class="d-flex wrap">
       <label class="label" for="Name">Nombre Completo:</label>
       <label class="labelC" for="City">Ciudad:</label><br>
@@ -136,7 +136,7 @@
     </div>
     <div class="d-flex wrap">
       <label class="label" for="Project">Empresa o proyecto:</label>
-      <label class="labelO" for="Phone">Télefono:</label><br>
+      <label class="labelC" for="Phone">Télefono:</label><br>
     </div>
     <div class="d-flex wrap">
       <input class="inputG" type="text" id="Project">
@@ -150,15 +150,48 @@
       <input class="inputG" type="text" id="Email">
       <input class="inputC" type="text" id="Product">
     </div>
-    <div class="d-flex justify-content-center">
-      <button style="border: none; margin-top: 5rem; width: 20rem; height: 4rem; border-radius: 20px; font-size: 1.5rem;">ENVIA TUS DATOS </button>
+    <div class="container-button">
+      <button class="button-contact">ENVIA TUS DATOS </button>
     </div>
   </div>
 </div>
 
 <!-- FOOTER -->
 
-<app-footer></app-footer>
+<div class="container">
+  <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
+    <div class="col mb-3">
+      <a href="/" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
+        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+      </a>
+      <p class="text-body-secondary">GROUP M&S</p>
+    </div>
+
+    <div class="col mb-3">
+
+    </div>
+
+    <div class="col mb-3">
+      <h5>Bogota DC, Colombia</h5>
+      <ul class="nav flex-column">
+        <h4>Correos Electronicos:</h4>
+        <p><a href="mailto:groupms&#64;gmail.com">groupms&#64;gmail.com</a></p>
+
+      </ul>
+    </div>
+
+    <div class="col mb-3">
+      <h5>Teléfonos de Contacto</h5>
+      <ul class="nav flex-column">
+        <p><a href="tel:+573123456789">+57 3123456789</a></p>
+        <p><a href="tel:+573123456789">+57 3123456789</a></p>
+
+      </ul>
+    </div>
+  </footer>
+</div>
+
+
 
 
 

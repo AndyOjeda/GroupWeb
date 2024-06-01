@@ -78,6 +78,8 @@
     color: #c7c4c1;
     border-radius: 20px;
     padding: 5px 15px;
+    width: 15rem;
+    height: 2.5rem;
 }
 
 .btn:hover{
@@ -104,7 +106,7 @@
 }
 
 .inputG{
-  width: 55rem;
+  width: 30rem;
   height: 3.5rem;
   border: none;
   border-radius: 20px;
@@ -112,7 +114,7 @@
 }
 
 .inputC{
-  width: 35rem;
+  width: 30rem;
   height: 3.5rem;
   margin-left: 10rem;
   border: none;
@@ -126,7 +128,7 @@
   font-weight: 300;
   font-style: normal;
   color: #373442;
-  font-size: 2rem;
+  font-size: 1.4rem;
 }
 
 .labelC{
@@ -135,8 +137,8 @@
   font-weight: 300;
   font-style: normal;
   color: #373442;
-  font-size: 2rem;
-  margin-left: 50rem;
+  font-size: 1.4rem;
+  margin-left: 28rem;
 }
 
 .labelO{
@@ -145,7 +147,46 @@
   font-weight: 300;
   font-style: normal;
   color: #373442;
-  font-size: 2rem;
-  margin-left: 48.5rem;
+  font-size: 1.5rem;
+  margin-left: 27.5rem;
 }
 
+.card-title{
+  font-size: 2rem;
+}
+
+.pictures{
+  width: 31.7rem; 
+  height: 24rem;
+}
+
+.btn-text{
+  font-size: 1rem ;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-contact{
+  border: none; 
+  margin-top: 5rem; 
+  width: 20rem; 
+  height: 4rem; 
+  border-radius: 20px; 
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.container-button{
+  display: flex; 
+  margin-left: 25rem;
+}
+
+.footer-container{
+  background-color:  #888987;
+  width: 100%;
+  margin:0;
+  padding: 0;
+  display: block;
+}
