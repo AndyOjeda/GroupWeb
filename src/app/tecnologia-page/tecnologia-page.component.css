@@ -95,6 +95,7 @@
     margin: 2rem;
 
 }
+
 .card{
     display: flex;
     justify-content: center;
@@ -146,6 +147,7 @@
 .background{
     background-image: linear-gradient(to left, #373442, #e4e0de); 
   }
+
 
 
 
