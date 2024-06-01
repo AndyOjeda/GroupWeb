@@ -1,0 +1,36 @@
+.card {
+  width: 75rem;
+  height: 25rem;
+  background: #EAEBEC;
+  border-radius: 10px;
+  transition: border-radius 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+ }
+
+ .shadow {
+  box-shadow: inset 0 -3em 3em rgba(0,0,0,0.1),
+              0 0  0 2px rgb(190, 190, 190),
+              0.3em 0.3em 1em rgba(0,0,0,0.3);
+ }
+
+ .image-product{
+  background-color: #D2D4D6;
+  width: 22rem;
+  height: 25rem;
+
+ }
+
+ .img{
+  width: 20rem;
+  height: 20rem;
+  margin: 2rem;
+ }
+
+ .img:hover {
+  opacity: 10;
+  transform: scale(1.05);
+ }
+
+ .text{
+  width: 50em;
+  height: 20em;
+ }

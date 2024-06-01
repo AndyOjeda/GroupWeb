@@ -96,56 +96,56 @@
 
 }
 
-.card{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 15rem;
-    height: 25rem;
-    padding: 1rem;  
-    padding-top: 3cap;
-}
+  .card{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 15rem;
+      height: 25rem;
+      padding: 1rem;
+      padding-top: 3cap;
+  }
 
-.card-title{
-    font-family: "Poppins", sans-serif;
-    font-size: 1.1rem;
-    font-weight: bold;
-    font-style: normal;
-    color: #19191a;
-    text-align: center;
-}
+  .card-title{
+      font-family: "Poppins", sans-serif;
+      font-size: 1.1rem;
+      font-weight: bold;
+      font-style: normal;
+      color: #19191a;
+      text-align: center;
+  }
 
-.card-info{
-    font-family: "Poppins", sans-serif;
-    font-size: 0.9rem;
-    font-weight:normal;
-    font-style: normal;
-    color: #888987;
-    text-align: center;
-}
+  .card-info{
+      font-family: "Poppins", sans-serif;
+      font-size: 0.9rem;
+      font-weight:normal;
+      font-style: normal;
+      color: #888987;
+      text-align: center;
+  }
 
-.card-button{
-    background-color: #04AA6D;
-    color: white;
+  .card-button{
+      background-color: #04AA6D;
+      color: white;
+      border: 2px solid #04AA6D;
+      border-radius: 12px;
+      margin-left: 1rem;
+      margin-right: 1rem;
+      display: flex;
+      justify-content: center;
+      padding: 0.6rem;
+      width: 100%;
+      height: 3rem;
+  }
+
+  .card-button:hover{
+    background-color: white;
+    color: black;
     border: 2px solid #04AA6D;
-    border-radius: 12px;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    display: flex;
-    justify-content: center;
-    padding: 0.6rem;
-    width: 100%;
-    height: 3rem;
-}
-
-.card-button:hover{
-  background-color: white;
-  color: black;
-  border: 2px solid #04AA6D;
-}
+  }
 
 .background{
-    background-image: linear-gradient(to left, #888987, #d6d7d6); 
+    background-image: linear-gradient(to left, #888987, #d6d7d6);
 }
 
 
