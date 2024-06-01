@@ -1,0 +1,65 @@
+.footer-container{
+    background-color:  #adaead;
+    width: 100%;
+    margin:0;
+    padding: 0;
+    display: flexbox;
+}
+
+.primary-text{
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.secondary-text{
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.third-text{
+    font-family: "DM Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+}
+.color-white{
+    color: #f0f0f0;
+}
+.color-silver{
+    color: #c7c4c1;
+}
+.color-raisin{
+    color: #373442;
+}
+.color-khaki{
+    color: #a69a8e;
+}
+.color-gray{
+    color: #888987;
+}
+.color-black{
+    color: #19191a;
+}
+
+.text-title{
+    font-size: 3rem;
+    margin-left: 6rem;
+    font-weight: bold;
+}
+
+.text-body{
+    font-size: 1.4rem;
+    color: #19191a;
+    text-decoration: none;
+}
+
+.link-body-emphasis {
+    color: inherit; /* El enlace toma el color del texto circundante */
+    text-decoration: none; /* Elimina la línea subrayada */
+}
+    
+
+    
