@@ -1,8 +1,8 @@
-<!-- 3 CARDS INICIALES -->
+<!-- CARDS INICIALES -->
 
 <div class="d-flex wrap justify-content-center">
   <div class="card img card-1">
-    <img src="../../assets/img/Celular.png" class="card-img-top img pictures" alt="...">
+    <img src="../../assets/img/devices (1).png" class="card-img-top img pictures devices-picture" alt="...">
     <div class="card-body">
       <h5 class="card-title primary-text color-white">Tecnología</h5>
       <a href="#" class="btn btn-primary secondary-text btn-text">Explora Aquí</a>
@@ -18,7 +18,7 @@
   </div>
 
   <div class="card img card-3">
-    <img src="../../assets/img/Car.png" class="card-img-top img pictures" alt="...">
+    <img src="../../assets/img/cars.png" class="card-img-top img pictures car-picture" alt="...">
     <div class="card-body">
       <h5 class="card-title primary-text color-white">Compra-Venta</h5>
       <a href="#" class="btn btn-primary secondary-text btn-text">Explora Aquí</a>
@@ -80,7 +80,10 @@
         <button class="redondo"></button>
         <button class="redondo"></button>
         <button class="redondo"></button>
+        <br>
+        <br>
       </div>
+      <button type="button" class="card-button">Más Info</button>
   </p-card>
 
   <p-card header="Iphone 15 (128 GB)" subheader="$3.500.000" [style]="{ width: '360px' }">
@@ -91,7 +94,24 @@
         <button class="redondo"></button>
         <button class="redondo"></button>
         <button class="redondo"></button>
+        <br>
+        <br>
       </div>
+      <button type="button" class="card-button">Más Info</button>
+  </p-card>
+
+  <p-card header="Iphone 15 (128 GB)" subheader="$3.500.000" [style]="{ width: '360px'}">
+    <ng-template pTemplate="header">
+        <img alt="Card" src="../../assets/img/IPHONE.png" />
+    </ng-template>
+      <div class="d-flex wrap">
+        <button class="redondo"></button>
+        <button class="redondo"></button>
+        <button class="redondo"></button>
+        <br>
+        <br>
+      </div>
+      <button type="button" class="card-button">Más Info</button>
   </p-card>
 
   <p-card header="Iphone 15 (128 GB)" subheader="$3.500.000" [style]="{ width: '360px' }">
@@ -102,18 +122,10 @@
         <button class="redondo"></button>
         <button class="redondo"></button>
         <button class="redondo"></button>
+        <br>
+        <br>
       </div>
-  </p-card>
-
-  <p-card header="Iphone 15 (128 GB)" subheader="$3.500.000" [style]="{ width: '360px' }">
-    <ng-template pTemplate="header">
-        <img alt="Card" src="../../assets/img/IPHONE.png" />
-    </ng-template>
-      <div class="d-flex wrap">
-        <button class="redondo"></button>
-        <button class="redondo"></button>
-        <button class="redondo"></button>
-      </div>
+      <button type="button" class="card-button">Más Info</button>
   </p-card>
 </div>
 
@@ -158,7 +170,45 @@
 
 <!-- FOOTER -->
 
-<app-footer></app-footer>
+<!-- FOOTER -->
+
+<div class="footer-container">
+  <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
+    <div class="col mb-3">
+      <a href="/" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
+        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+      </a>
+      <p class="text-body-secondary third-text text-title">GROUP M&S</p>
+    </div>
+
+    <div class="col mb-3">
+      <!-- Espacio -->
+    </div>
+
+    <div class="col mb-3">
+      <h5 class="third-text text-body">Bogota DC, Colombia</h5>
+      <ul class="nav flex-column">
+        <h4 class="third-text text-body">Correos Electronicos:</h4>
+        <p class="third-text text-body link-body-emphasis"><a href="mailto:groupms&#64;gmail.com">groupms&#64;gmail.com</a></p>
+
+      </ul>
+    </div>
+
+    <div class="col mb-3">
+      <!-- Espacio -->
+    </div>
+
+    <div class="col mb-2">
+      <h5 class="third-text text-body">Teléfonos de Contacto</h5>
+      <ul class="nav flex-column">
+        <p class="third-text text-body"><a href="tel:+573123456789">+57 3123456789</a></p>
+        <p class="third-text text-body"><a href="tel:+573123456789">+57 3123456789</a></p>
+
+      </ul>
+    </div>
+  </footer>
+</div>
+
 
 
 
