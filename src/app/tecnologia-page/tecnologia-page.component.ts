@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CardModule } from 'primeng/card';
 import { FooterComponent } from '../footer/footer.component';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-tecnologia-page',
@@ -11,4 +13,9 @@ import { FooterComponent } from '../footer/footer.component';
 })
 export class TecnologiaPageComponent {
 
+  constructor( private router: Router ) { }
+
+  product(){
+    this.router.navigate(['/product']);
+  }
 }
