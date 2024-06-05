@@ -5,6 +5,7 @@ import { FincaPageComponent } from './finca-page/finca-page.component';
 import { CompraPageComponent } from './compra-page/compra-page.component';
 import { LoginComponent } from './login/login.component';
 import { UserComponent } from './user/user.component';
+import { ProductPageComponent } from './product-page/product-page.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
@@ -14,5 +15,6 @@ export const routes: Routes = [
   { path: 'compra', component: CompraPageComponent},
   { path: 'login', component: LoginComponent},
   { path: 'user', component: UserComponent},
+  { path: 'product', component: ProductPageComponent},
 
 ];

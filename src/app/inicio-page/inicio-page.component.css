@@ -156,9 +156,13 @@
 }
 
 .pictures{
+
   width: 31.7rem; 
   height: 23rem;
   margin-top: 1rem;
+
+  width: 31.7rem;
+  height: 24rem;
 }
 
 .btn-text{
@@ -170,19 +174,20 @@
 }
 
 .button-contact{
-  border: none; 
-  margin-top: 5rem; 
-  width: 20rem; 
-  height: 4rem; 
-  border-radius: 20px; 
+  border: none;
+  margin-top: 5rem;
+  width: 20rem;
+  height: 4rem;
+  border-radius: 20px;
   font-size: 1.5rem;
   text-align: center;
 }
 
 .container-button{
-  display: flex; 
+  display: flex;
   margin-left: 25rem;
 }
+
 
 .car-picture{
   width: 30rem; 
@@ -294,6 +299,10 @@ border: 2px solid #373442;
 
 .footer-container{
   background-color:  white;
+}
+
+.footer-container{
+  background-color:  #ffffff;
   width: 100%;
   margin:0;
   padding: 0;
@@ -351,9 +360,12 @@ border: 2px solid #373442;
 }
 
 .link-body-emphasis {
+
   color: inherit; /* El enlace toma el color del texto circundante */
   text-decoration: none; /* Elimina la línea subrayada */
 }
   
+
+
 
 
