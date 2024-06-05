@@ -1,6 +1,6 @@
-.card {
-  width: 75rem;
-  height: 25rem;
+.main-card {
+  width: 78rem;
+  height: 26rem;
   background: #EAEBEC;
   border-radius: 10px;
   transition: border-radius 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -15,7 +15,7 @@
  .image-product{
   background-color: #D2D4D6;
   width: 22rem;
-  height: 25rem;
+  height: 26rem;
 
  }
 
@@ -23,6 +23,7 @@
   width: 20rem;
   height: 20rem;
   margin: 2rem;
+  border-radius: 10px;
  }
 
  .img:hover {
@@ -30,7 +31,167 @@
   transform: scale(1.05);
  }
 
- .text{
-  width: 50em;
-  height: 20em;
- }
+.text-list {
+  text-align: justify;
+  padding: 1rem;
+  width: 50rem;
+  font-size: 1.2em;
+  margin-left: 2rem;
+}
+
+button {
+  font-family: inherit;
+  font-size: 20px;
+  background: #04AA6D;
+  color: white;
+  padding: 0.7em 1em;
+  padding-right: 0.9em;
+  margin-left: 33em;
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.2s;
+  cursor: pointer;
+  width: 9rem;
+  height: 5rem;
+}
+
+button span {
+  display: block;
+  margin-left: 0.3em;
+  transition: all 0.3s ease-in-out;
+}
+
+button svg {
+  display: block;
+  transform-origin: center center;
+  transition: transform 0.3s ease-in-out;
+}
+
+button:hover .svg-wrapper {
+  animation: fly-1 0.6s ease-in-out infinite alternate;
+}
+
+button:hover svg {
+  transform: translateX(1.2em) rotate(45deg) scale(1.1);
+}
+
+button:hover span {
+  transform: translateX(5em);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+@keyframes fly-1 {
+  from {
+    transform: translateY(0.1em);
+  }
+
+  to {
+    transform: translateY(-0.1em);
+  }
+}
+
+.primary-text{
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  
+}
+
+.secondary-text{
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  margin-top: 1rem;
+  margin-left: 2rem;
+}
+
+.third-text{
+  font-family: "DM Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+.color-white{
+  color: #f0f0f0;
+}
+.color-silver{
+  color: #c7c4c1;
+}
+.color-raisin{
+  color: #373442;
+}
+.color-khaki{
+  color: #a69a8e;
+}
+.color-gray{
+  color: #888987;
+}
+.color-black{
+  color: #19191a;
+}
+.cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25rem;
+  height: 23rem;
+  padding: 1.8rem;
+  padding-top: 3cap;
+}
+
+.cards-title {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1rem;
+  font-weight: bold;
+  font-style: normal;
+  color: #19191a;
+  text-align: center;
+}
+
+.cards-info {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+  font-weight: normal;
+  font-style: normal;
+  color: #888987;
+  text-align: center;
+}
+
+.cards-button {
+  background-color: #04AA6D;
+  color: white;
+  border: 2px solid #04AA6D;
+  border-radius: 12px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  display: flex;
+  justify-content: center;
+  padding: 0.6rem;
+  width: 100%;
+  height: 3rem;
+}
+
+.cards-button:hover {
+  background-color: white;
+  color: black;
+  border: 2px solid #04AA6D;
+}
+
+.cards-img-top{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20rem;
+    height: 15rem;
+}
+
+
+
+
