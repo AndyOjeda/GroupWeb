@@ -1,11 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation} from '@angular/core';
+import { Router } from '@angular/router';
+import { PrimeNGConfig } from 'primeng/api';
+import { CardModule } from 'primeng/card';
+import { NgModel } from '@angular/forms';
+import { InputTextModule } from 'primeng/inputtext';
+import { FooterComponent } from '../footer/footer.component';
+import { CarouselModule } from 'primeng/carousel';
 
 @Component({
   selector: 'app-product-page',
   standalone: true,
-  imports: [],
+  imports: [ CardModule, InputTextModule, FooterComponent ],
   templateUrl: './product-page.component.html',
-  styleUrl: './product-page.component.css'
+  styleUrl: './product-page.component.css',
+  encapsulation: ViewEncapsulation.Emulated  // Esto es por defecto
 })
 export class ProductPageComponent {
 
