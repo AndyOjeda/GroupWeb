@@ -84,7 +84,7 @@
 
 .secondary-text{
   font-family: "Poppins", sans-serif;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
 }
 
@@ -119,13 +119,13 @@
   border: none;
   border-radius: 12px;
   padding: 1rem 2rem;
-  border: 2px solid #7A7C79; 
+  border: 2px solid #7A7C79;
 }
 
 .primary-button:hover{
   background-color: white;
   color: black;
-  border: 2px solid #7A7C79; 
+  border: 2px solid #7A7C79;
 }
 
 .nav-text{
