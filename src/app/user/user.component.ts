@@ -1,14 +1,19 @@
 import { Component } from '@angular/core';
-import { SidebarModule } from 'primeng/sidebar';
+
 import { ButtonModule } from 'primeng/button';
+import { NavuserComponent } from "../navuser/navuser.component";
+import { SidebarComponent } from '../sidebar/sidebar.component';
+import { SidebarModule } from '../sidebar/sidebar.module';
+
 
 @Component({
-  selector: 'app-user',
-  standalone: true,
-  imports: [SidebarModule, ButtonModule],
-  templateUrl: './user.component.html',
-  styleUrl: './user.component.css'
+    selector: 'app-user',
+    standalone: true,
+    templateUrl: './user.component.html',
+    styleUrl: './user.component.css',
+    imports: [ButtonModule, NavuserComponent, SidebarModule]
 })
 export class UserComponent {
   sidebarVisible: boolean = false;
 }
+

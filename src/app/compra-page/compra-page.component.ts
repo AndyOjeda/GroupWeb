@@ -8,6 +8,7 @@ import { NavigationComponent } from '../navigation/navigation.component';
   imports: [ FooterComponent, NavigationComponent],
   templateUrl: './compra-page.component.html',
   styleUrl: './compra-page.component.css'
+
 })
 export class CompraPageComponent {
 
