@@ -6,14 +6,16 @@ import { NgModel } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { FooterComponent } from '../footer/footer.component';
 import { CarouselModule } from 'primeng/carousel';
+import { NavigationComponent } from "../navigation/navigation.component";
 
 @Component({
-  selector: 'app-inicio-page',
-  standalone: true,
-  imports: [ CardModule, InputTextModule, FooterComponent ],
-  templateUrl: './inicio-page.component.html',
-  styleUrl: './inicio-page.component.css',
-  encapsulation: ViewEncapsulation.Emulated  // Esto es por defecto
+    selector: 'app-inicio-page',
+    standalone: true,
+    templateUrl: './inicio-page.component.html',
+    styleUrl: './inicio-page.component.css',
+    encapsulation: ViewEncapsulation.Emulated // Esto es por defecto
+    ,
+    imports: [CardModule, InputTextModule, FooterComponent, NavigationComponent]
 })
 export class InicioPageComponent {
 
