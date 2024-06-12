@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { ButtonModule } from 'primeng/button';
 import { NavuserComponent } from "../navuser/navuser.component";
 import { SidebarComponent } from '../sidebar/sidebar.component';
@@ -18,3 +19,4 @@ import { RouterOutlet } from '@angular/router';
 export class UserComponent {
   sidebarVisible: boolean = false;
 }
+
