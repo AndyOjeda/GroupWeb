@@ -4,6 +4,9 @@ import { ButtonModule } from 'primeng/button';
 import { NavuserComponent } from "../navuser/navuser.component";
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { SidebarModule } from '../sidebar/sidebar.module';
+import { Router } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
+
 
 
 @Component({
@@ -11,7 +14,7 @@ import { SidebarModule } from '../sidebar/sidebar.module';
     standalone: true,
     templateUrl: './user.component.html',
     styleUrl: './user.component.css',
-    imports: [ButtonModule, NavuserComponent, SidebarModule]
+    imports: [ButtonModule, NavuserComponent, SidebarModule, RouterOutlet],
 })
 export class UserComponent {
   sidebarVisible: boolean = false;
