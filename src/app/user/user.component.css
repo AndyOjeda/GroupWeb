@@ -12,12 +12,11 @@ app-sidebar {
   position: fixed;
   top: 0;
   left: 0;
-  height: 100%;
-  width: 15rem; /* Ajustar el ancho según sea necesario */
-  background-color: #f0f0f0; /* Color de fondo de la sidebar */
-  z-index: 200;
-  margin: 0; /* Asegúrate de que no haya márgenes */
-  padding: 0; /* Asegúrate de que no haya padding */
+  
+}
+
+app-sidebar.collapsed {
+  width: 3rem; /* Ancho cuando está colapsada */
 }
 
 .main-content {
@@ -27,6 +26,11 @@ app-sidebar {
   justify-content: center;
   align-items: center;
   padding: 2rem; /* Espaciado alrededor del contenido principal */
+  transition: margin-left 0.3s; /* Animación para la transición del margen */
+}
+
+.main-content.collapsed {
+  margin-left: 3rem; /* Debe coincidir con el ancho de la sidebar colapsada */
 }
 
 .cards-container {
@@ -162,5 +166,3 @@ app-sidebar {
   display: flex;
   align-items: center;
 }
-
-

@@ -6,6 +6,12 @@ import { CompraPageComponent } from './compra-page/compra-page.component';
 import { LoginComponent } from './login/login.component';
 import { UserComponent } from './user/user.component';
 import { ProductPageComponent } from './product-page/product-page.component';
+import { TecuserComponent } from './tecuser/tecuser.component';
+import { FincauserComponent } from './fincauser/fincauser.component';
+import { ComprauserComponent } from './comprauser/comprauser.component';  
+import { FormpopupComponent } from './formpopup/formpopup.component';
+import { ClosepopupComponent } from './closepopup/closepopup.component';
+
 
 export const routes: Routes = [
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
@@ -16,5 +22,10 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'user', component: UserComponent},
   { path: 'product', component: ProductPageComponent},
+  { path: 'tecuser', component: TecuserComponent},
+  { path: 'fincauser', component: FincauserComponent},
+  { path: 'comprauser', component: ComprauserComponent},
+  { path: 'formpopup', component: FormpopupComponent},
+  { path: 'closepopup', component: ClosepopupComponent}
 
 ];

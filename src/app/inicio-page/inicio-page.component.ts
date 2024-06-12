@@ -7,6 +7,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { FooterComponent } from '../footer/footer.component';
 import { CarouselModule } from 'primeng/carousel';
 import { NavigationComponent } from "../navigation/navigation.component";
+import { RouterOutlet } from '@angular/router';
 
 @Component({
     selector: 'app-inicio-page',
@@ -15,7 +16,7 @@ import { NavigationComponent } from "../navigation/navigation.component";
     styleUrl: './inicio-page.component.css',
     encapsulation: ViewEncapsulation.Emulated // Esto es por defecto
     ,
-    imports: [CardModule, InputTextModule, FooterComponent, NavigationComponent]
+    imports: [CardModule, InputTextModule, FooterComponent, NavigationComponent, RouterOutlet]
 })
 export class InicioPageComponent {
 
