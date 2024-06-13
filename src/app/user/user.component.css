@@ -13,6 +13,7 @@ app-sidebar {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 1000; 
   
 }
 
@@ -131,6 +132,7 @@ app-sidebar.collapsed {
 
 .color-black {
   color: #19191a;
+}
 
 .card {
     max-width: 300px;
@@ -285,9 +287,6 @@ app-sidebar.collapsed {
   display: flex;
   align-items: center;
 }
-<<<<<<< HEAD
-=======
-
 
 .navbar {
   background-color: #E4E0DE;
@@ -317,4 +316,3 @@ app-sidebar.collapsed {
   height: 24px;
 }
 
->>>>>>> e19172f9f1e704b33c1a5496b131b37aaa555a83

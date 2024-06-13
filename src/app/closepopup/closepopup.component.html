@@ -1,1 +1,9 @@
-<p>closepopup works!</p>
+<div *ngIf="isVisible" class="popup-overlay">
+  <div class="popup-content">
+    <h2 class="primary-text">Cerrar Sesión</h2>
+    <p class="secondary-text">¿Estás seguro de que deseas cerrar sesión?</p>
+    <div class="buttonscontainer"><button class="danger-button" (click)="confirmLogout()">Sí</button>
+    <button class="primary-button" (click)="closePopup()">No</button>
+    </div>
+  </div>
+</div>
