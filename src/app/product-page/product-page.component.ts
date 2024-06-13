@@ -7,15 +7,17 @@ import { InputTextModule } from 'primeng/inputtext';
 import { FooterComponent } from '../footer/footer.component';
 import { CarouselModule } from 'primeng/carousel';
 import { NavigationComponent } from '../navigation/navigation.component';
+import { GalleriaModule } from 'primeng/galleria';
 
 @Component({
   selector: 'app-product-page',
   standalone: true,
-  imports: [ CardModule, InputTextModule, FooterComponent, CarouselModule, NavigationComponent],
+  imports: [ CardModule, InputTextModule, FooterComponent, CarouselModule, NavigationComponent, GalleriaModule],
   templateUrl: './product-page.component.html',
   styleUrl: './product-page.component.css',
   encapsulation: ViewEncapsulation.Emulated  // Esto es por defecto
 })
 export class ProductPageComponent {
-
+  
 }
+

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TecuserComponent } from './tecuser.component';
+import { DeletepopupComponent } from '../deletepopup/deletepopup.component';
 
 describe('TecuserComponent', () => {
   let component: TecuserComponent;
@@ -8,7 +9,7 @@ describe('TecuserComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TecuserComponent]
+      imports: [TecuserComponent, DeletepopupComponent]
     })
     .compileComponents();
     
