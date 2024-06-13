@@ -1,10 +1,24 @@
 <app-navigation></app-navigation>
 
-<div class="d-flex justify-content-center">
+div class="d-flex justify-content-center">
   <div class="main-card shadow">
     <div class="image-product d-flex wrap">
       <img src="../../assets/img/iphoneBackPng.png" class="img" alt="Iphone 15">
 
+      <!-- Accordion de Imágenes -->
+      <div class="card" style="width: 100%;">
+        <p-galleria 
+            [(value)]="images" 
+            [showIndicators]="true" 
+            [showThumbnails]="false" 
+            [responsiveOptions]="responsiveOptions" 
+            [containerStyle]="{ 'max-width': '640px', 'margin': 'auto' }">
+            <ng-template pTemplate="item" let-item>
+                <img [src]="item.itemImageSrc" style="width: 100%; display: block;" />
+            </ng-template>
+        </p-galleria>
+      </div>
+      
       <div class="text">
         <h2 class="secondary-text">Iphone 15 Pro Max</h2>
         <h4 class="secondary-text">Especificaciones principales</h4>

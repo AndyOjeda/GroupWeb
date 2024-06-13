@@ -1,0 +1,9 @@
+<div *ngIf="isVisible" class="popup-overlay">
+    <div class="popup-content">
+      <h2 class="primary-text">Eliminar Elemento</h2>
+      <p class="secondary-text">¿Deseas Borrar este elemento?</p>
+      <div class="buttonscontainer"><button class="danger-button" (click)="confirmDelete()">Sí</button>
+      <button class="primary-button" (click)="DeletePopup()">No</button>
+      </div>
+    </div>
+  </div>
