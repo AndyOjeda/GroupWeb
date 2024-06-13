@@ -1,10 +1,11 @@
 <app-navuser></app-navuser>
 <div class="container">
 <app-sidebar></app-sidebar>
+<app-formtwopopup [isVisible]="isModalVisible" (closeModal)="closeModal()"></app-formtwopopup>
 
 <div class="head-text">
     <h1 class="title">Finca Raíz</h1>
-    <button class="add-button">+ Añadir Producto</button>
+    <button class="add-button" (click)="openModal()">+ Añadir Producto</button>
 </div>
 
 <div class="col">
