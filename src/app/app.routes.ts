@@ -11,6 +11,7 @@ import { FincauserComponent } from './fincauser/fincauser.component';
 import { ComprauserComponent } from './comprauser/comprauser.component';  
 import { FormpopupComponent } from './formpopup/formpopup.component';
 import { ClosepopupComponent } from './closepopup/closepopup.component';
+import { FormtwopopupComponent } from './formtwopopup/formtwopopup.component';
 
 
 export const routes: Routes = [
@@ -26,6 +27,7 @@ export const routes: Routes = [
   { path: 'fincauser', component: FincauserComponent},
   { path: 'comprauser', component: ComprauserComponent},
   { path: 'formpopup', component: FormpopupComponent},
-  { path: 'closepopup', component: ClosepopupComponent}
+  { path: 'closepopup', component: ClosepopupComponent},
+  {path: 'formtwopopup', component: FormtwopopupComponent}
 
 ];
