@@ -332,12 +332,14 @@
     border: 2px solid #04AA6D;
   }
 
-.background{
-    background-image: linear-gradient(to left, #888987, #d6d7d6);
-}
+
 
 .album{
   background-color: #ffffff;
+}
+
+.background{
+  background-image: linear-gradient(to left, #888987, #d6d7d6);
 }
 
 
