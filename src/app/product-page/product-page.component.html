@@ -8,9 +8,9 @@ div class="d-flex justify-content-center">
       <!-- Accordion de Imágenes -->
       <div class="card" style="width: 100%;">
         <p-galleria 
-            [(value)]="images" 
+            [value]="images" 
             [showIndicators]="true" 
-            [showThumbnails]="false" 
+            [showThumbnails]="false"  
             [responsiveOptions]="responsiveOptions" 
             [containerStyle]="{ 'max-width': '640px', 'margin': 'auto' }">
             <ng-template pTemplate="item" let-item>
@@ -54,7 +54,6 @@ div class="d-flex justify-content-center">
     </div>
   </div>
 
-</div>
 
 <div class="d-flex justify-content-center" style="margin: 20px;">
   <h2 class="secondary-text" style="font-size: 3rem;">También te podría interesar...</h2>
