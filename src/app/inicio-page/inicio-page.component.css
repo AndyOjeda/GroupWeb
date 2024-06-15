@@ -36,11 +36,11 @@
     color: #19191a;
 }
 .img{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  height: auto;
 }
 
 .card{
@@ -156,13 +156,10 @@
 }
 
 .pictures{
-
-  width: 31.7rem;
-  height: 23rem;
+  width: 100%;
+  max-width: 31.7rem;
+  height: auto;
   margin-top: 1rem;
-
-  width: 31.7rem;
-  height: 24rem;
 }
 
 .btn-text{

@@ -1,8 +1,5 @@
-import { Component, OnInit,  ViewEncapsulation} from '@angular/core';
-import { Router } from '@angular/router';
-import { PrimeNGConfig } from 'primeng/api';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { CardModule } from 'primeng/card';
-import { NgModel } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { FooterComponent } from '../footer/footer.component';
 import { CarouselModule } from 'primeng/carousel';
@@ -14,10 +11,18 @@ import { HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-product-page',
   standalone: true,
-  imports: [ CardModule, InputTextModule, FooterComponent, CarouselModule, NavigationComponent, GalleriaModule, HttpClientModule],
+  imports: [
+    CardModule,
+    InputTextModule,
+    FooterComponent,
+    CarouselModule,
+    NavigationComponent,
+    GalleriaModule,
+    HttpClientModule
+  ],
   templateUrl: './product-page.component.html',
-  styleUrl: './product-page.component.css',
-  encapsulation: ViewEncapsulation.Emulated  // Esto es por defecto
+  styleUrls: ['./product-page.component.css'],
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class ProductPageComponent implements OnInit {
   images: any[] = [];
@@ -45,4 +50,3 @@ export class ProductPageComponent implements OnInit {
     });
   }
 }
-
