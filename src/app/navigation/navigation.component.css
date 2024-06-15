@@ -75,45 +75,51 @@
   display: block !important;
 }
 
-.primary-text{
+.primary-text {
   font-family: "Oswald", sans-serif;
   font-optical-sizing: auto;
   font-weight: 700;
   font-style: normal;
 }
 
-.secondary-text{
+.secondary-text {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-style: normal;
 }
 
-.third-text{
+.third-text {
   font-family: "DM Sans", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
 }
-.color-white{
+
+.color-white {
   color: #f0f0f0;
 }
-.color-silver{
+
+.color-silver {
   color: #c7c4c1;
 }
-.color-raisin{
+
+.color-raisin {
   color: #373442;
 }
-.color-khaki{
+
+.color-khaki {
   color: #a69a8e;
 }
-.color-gray{
+
+.color-gray {
   color: #888987;
 }
-.color-black{
+
+.color-black {
   color: #19191a;
 }
 
-.primary-button{
+.primary-button {
   background-color: #7A7C79;
   color: #f0f0f0;
   border: none;
@@ -122,14 +128,27 @@
   border: 2px solid #7A7C79;
 }
 
-.primary-button:hover{
+.primary-button:hover {
   background-color: white;
   color: black;
   border: 2px solid #7A7C79;
 }
 
-.nav-text{
+.nav-text {
   font-size: 1.1rem;
   margin-right: 5px;
   margin-left: 5px;
+}
+
+/* Añadir estilos responsivos */
+@media (max-width: 768px) {
+  .nav-scroller .nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .primary-button {
+    width: 100%;
+    margin-top: 10px;
+  }
 }
