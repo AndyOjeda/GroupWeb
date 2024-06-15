@@ -152,3 +152,8 @@
     margin-top: 10px;
   }
 }
+
+.small-gif {
+  max-width: 31%;
+  height: auto;
+}
