@@ -77,9 +77,12 @@
 
 .primary-text {
   font-family: "Oswald", sans-serif;
-  font-optical-sizing: auto;
+  white-space: nowrap;
   font-weight: 700;
   font-style: normal;
+  display: inline;
+  vertical-align: middle;
+  margin-top: 0.5rem;
 }
 
 .secondary-text {
@@ -154,6 +157,7 @@
 }
 
 .small-gif {
-  max-width: 31%;
-  height: auto;
+  max-width: 7.5rem;
+  width: auto;
+  vertical-align: middle;
 }
