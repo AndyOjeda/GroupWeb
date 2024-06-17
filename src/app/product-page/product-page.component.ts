@@ -5,7 +5,6 @@ import { FooterComponent } from '../footer/footer.component';
 import { CarouselModule } from 'primeng/carousel';
 import { NavigationComponent } from '../navigation/navigation.component';
 import { GalleriaModule } from 'primeng/galleria';
-import { PhotoService } from '../photo.service';
 import { HttpClientModule } from '@angular/common/http';
 
 @Component({
@@ -42,11 +41,8 @@ export class ProductPageComponent implements OnInit {
     }
   ];
 
-  constructor(private photoService: PhotoService) {}
+  constructor() {}
 
   ngOnInit() {
-    this.photoService.getImages().subscribe((images: any[]) => {
-      this.images = images;
-    });
   }
 }
