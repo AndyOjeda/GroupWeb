@@ -20,8 +20,8 @@ import { ToastModule } from 'primeng/toast';
   templateUrl: './tecuser.component.html',
   styleUrls: ['./tecuser.component.css'],
   imports: [
-    NavuserComponent, SidebarModule, RouterOutlet, DialogModule, ButtonModule, 
-    InputTextModule, FormsModule, FileUploadModule, BadgeModule, ProgressBarModule, 
+    NavuserComponent, SidebarModule, RouterOutlet, DialogModule, ButtonModule,
+    InputTextModule, FormsModule, FileUploadModule, BadgeModule, ProgressBarModule,
     ToastModule, HttpClientModule, CommonModule
   ],
   providers: [MessageService]
@@ -49,10 +49,10 @@ export class TecuserComponent {
   }
 
   showEditDialog() {
-    this.Editvisible = true;  
+    this.Editvisible = true;
   }
 
-  showDeleteDialog() {  
+  showDeleteDialog() {
     this.Deletevisible = true;
    }
 
