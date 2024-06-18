@@ -203,3 +203,10 @@ app-formpopup{
         align-items: center;
     }
 
+    ::ng-deep  .p-ripple{
+        background-color: transparent;
+        border: 0px;
+        
+      }
+      
+
