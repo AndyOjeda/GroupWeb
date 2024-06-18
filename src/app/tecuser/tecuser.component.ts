@@ -3,40 +3,33 @@ import { NavuserComponent } from "../navuser/navuser.component";
 import { SidebarModule } from "../sidebar/sidebar.module";
 import { Router } from '@angular/router';
 import { RouterOutlet } from '@angular/router';
-import { FormpopupModule } from '../formpopup/formpopup.module';
-import { DeletepopupModule } from "../deletepopup/deletepopup.module";
+import { DialogModule } from 'primeng/dialog';
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
     selector: 'app-tecuser',
     standalone: true,
     templateUrl: './tecuser.component.html',
     styleUrls: ['./tecuser.component.css'],
-    imports: [NavuserComponent, SidebarModule, RouterOutlet, FormpopupModule, DeletepopupModule]
+    imports: [NavuserComponent, SidebarModule, RouterOutlet, DialogModule, ButtonModule, InputTextModule, FormsModule]
 })
 export class TecuserComponent {
-  isModalVisible = false;
-  isDeletePopupVisible = false;
+  visible: boolean = false;
+  Editvisible: boolean = false;
+  Deletevisible: boolean = false;
 
-  openModal() {
-    this.isModalVisible = true;
+  showDialog() {
+    this.visible = true;
   }
 
-  closeModal() {
-    this.isModalVisible = false;
+  showEditDialog() {
+    this.Editvisible = true;  
   }
 
-  showDeletePopup() {
-    this.isDeletePopupVisible = true;
-  }
-
-  closeDeletePopup() {
-    this.isDeletePopupVisible = false;
-  }
-
-  confirmDelete() {
-    this.isDeletePopupVisible = false;
-    // Lógica para cerrar sesión
-    console.log('Elemento Eliminado');
-    // Aquí puedes redirigir al usuario a la página de inicio de sesión o realizar otras acciones necesarias.
-  }
+  showDeleteDialog() {  
+    this.Deletevisible = true;
+   }
 }
