@@ -9,7 +9,7 @@
          <!-- Pop Up Añadir --> 
     <div class="dialog flex justify-content-center">
       <button class="add-button" (click)="showDialog()">+ Añadir Producto </button>
-      <p-dialog [modal]="true" [(visible)]="visible" [style]="{ width: '40rem' }" class="form-background">
+      <p-dialog [modal]="true" [(visible)]="visible" [style]="{ width: '70rem' }" class="form-background">
         <span class="p-text-secondary block mb-5 titulo">Añadir Producto</span>
         
         <div class="flex align-items-center gap-3 mb-3">
@@ -111,14 +111,12 @@
             </svg>
             Editar Producto
           </button>
-          <p-dialog [modal]="true" [(visible)]="Editvisible" [style]="{ width: '40rem' }">
+          <p-dialog [modal]="true" [(visible)]="Editvisible" [style]="{ width: '70rem' }">
               <span class="p-text-secondary block mb-5 titulo">
                 Editar Articulo</span>
               
               <div class="flex align-items-center gap-3 mb-3">
-                <label for="picture" class="font-semibold w-6rem">Imagen Producto</label>
               
-
                 <!-- Componente de subida de archivos -->
           <div class="custom-card p-4">
             <p-toast></p-toast>
