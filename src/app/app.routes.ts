@@ -9,9 +9,7 @@ import { ProductPageComponent } from './product-page/product-page.component';
 import { TecuserComponent } from './tecuser/tecuser.component';
 import { FincauserComponent } from './fincauser/fincauser.component';
 import { ComprauserComponent } from './comprauser/comprauser.component';  
-import { FormpopupComponent } from './formpopup/formpopup.component';
-import { ClosePopUpComponent } from './closepopup/closepopup.component';
-import { FormtwopopupComponent } from './formtwopopup/formtwopopup.component';
+
 
 
 export const routes: Routes = [
@@ -25,9 +23,6 @@ export const routes: Routes = [
   { path: 'product', component: ProductPageComponent},
   { path: 'tecuser', component: TecuserComponent},
   { path: 'fincauser', component: FincauserComponent},
-  { path: 'comprauser', component: ComprauserComponent},
-  { path: 'formpopup', component: FormpopupComponent},
-  { path: 'closepopup', component: ClosePopUpComponent},
-  {path: 'formtwopopup', component: FormtwopopupComponent}
+  { path: 'comprauser', component: ComprauserComponent}
 
 ];
