@@ -206,6 +206,20 @@ p-dialog-content{
 ::ng-deep  .p-ripple{
         background-color: transparent;
         border: 0px;
+        margin-top: 1rem;
+}
+
+::ng-deep .p-icon{
+        height: 1.5rem;
+        width: 1.5rem;
+        color: #ffffff;
+
+}
+::ng-deep .p-dialog-header{
+        background-color: transparent;
+        border-radius: 12px;
+        height: 2rem;
+
 }
 
 .custom-card {
