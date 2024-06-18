@@ -3,7 +3,6 @@ app-sidebar {
     top: 0;
     left: 0;
     z-index: 1000;
-    
 }
 
 app-formpopup{
@@ -22,6 +21,7 @@ app-formpopup{
     padding: 1.8rem;
     padding-top: 3cap;
     margin-left: 23rem;
+    margin-top: 2rem;
     background-color: rgba(210, 212, 214, 100);
 }
 
@@ -95,10 +95,10 @@ app-formpopup{
 .head-text {
     display: flex; /* Enable flexbox layout */
     align-items: center; /* Align items vertically */
-    
+
   }
-  
-  .add-button {
+
+.add-button {
     margin-left: auto; /* Move the button to the right side */
     background-color: #04AA6D;
     color: white;
@@ -107,46 +107,47 @@ app-formpopup{
     padding: 0.6rem;
     height: 3rem;
     width: 10rem;
-    
-  }
 
-  .add-button:hover{
+}
+
+.add-button:hover{
     background-color: white;
     color: black;
     border: 2px solid #04AA6D;
-  }
+}
 
-  p-dialog-content{
+
+p-dialog-content{
     background-color: #f0f0f0;
-  }
-    
+}
 
-  ::ng-deep .p-dialog-content {
+
+::ng-deep .p-dialog-content {
     padding: 1rem;
     border: 0;
     background-color: rgba(210, 212, 214, 100%);
     margin: 1rem;
     border-radius: 12px;
-  }
+}
 
-  .dialog{
+.dialog{
     margin-left: 25rem;
     justify-content: center;
     display: flex;
     align-items: center;
     vertical-align: middle;
     padding: 1.8rem;
-  }
+}
 
-  .titulo {
+.titulo {
     font-size: 20px;
     text-align: left;
     font-family: "Poppins", sans-serif;
     font-weight: 700;
     font-style: normal;
-  }
+}
 
-    .long-input {
+.long-input {
         width: 100%;
         padding: 3px 20px;
         margin: 8px 0;
@@ -155,9 +156,9 @@ app-formpopup{
         border: 1px;
         box-sizing: border-box;
         color: #888;
-    }
+}
 
-    .danger-button{
+.danger-button{
         background-color: #ff0000;
         color: white;
         border: 2px solid #ff0000;
@@ -167,17 +168,17 @@ app-formpopup{
         width: 10rem;
         justify-content: center;
         margin: 1rem;
-    }
-    
+}
 
-    .danger-button:hover{
+
+.danger-button:hover{
         background-color: white;
         color: black;
         border: 2px solid #ff0000;
         margin: 1rem;
-    }
+}
 
-    .add-button{
+.add-button{
         background-color: #04AA6D;
         color: white;
         border: 2px solid #04AA6D;
@@ -187,24 +188,103 @@ app-formpopup{
         width: 10rem;
         justify-content: center;
         margin: 1rem;
-    }
+}
 
-    .add-button:hover{
+.add-button:hover{
         background-color: white;
         color: black;
         border: 2px solid #04AA6D;
         margin: 1rem;
-    }
+}
 
-    .buttons{
+.buttons{
         display: flex;
         justify-content: center;
         align-items: center;
-    }
+}
 
-    ::ng-deep  .p-ripple{
+::ng-deep  .p-ripple{
         background-color: transparent;
         border: 0px;
-        
-      }
-      
+        margin-top: 1rem;
+}
+
+::ng-deep .p-icon{
+        height: 1.5rem;
+        width: 1.5rem;
+        color: #ffffff;
+
+}
+::ng-deep .p-dialog-header{
+        background-color: transparent;
+        border-radius: 12px;
+        height: 2rem;
+
+}
+
+.custom-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+}
+
+.upload-header {
+  background-color: #f7f8fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.custom-button {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+}
+
+.custom-button .pi {
+  font-size: 18px;
+  color: #6c757d;
+}
+
+.custom-button[severity="success"] .pi {
+  color: #28a745;
+}
+
+.custom-button[severity="danger"] .pi {
+  color: #dc3545;
+}
+
+.custom-progress-bar {
+  height: 8px;
+  background-color: #e9ecef;
+  border-radius: 4px;
+}
+
+.custom-progress-bar .p-progressbar-value {
+  background-color: #17a2b8;
+  border-radius: 4px;
+}
+
+.empty-template {
+  text-align: center;
+  padding: 40px;
+  background-color: #f7f8fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+.upload-icon {
+  font-size: 48px;
+  color: #6c757d;
+  border: 2px solid #e0e0e0;
+  border-radius: 50%;
+  padding: 20px;
+}
+
+
