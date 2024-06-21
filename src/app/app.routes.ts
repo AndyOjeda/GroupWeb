@@ -8,7 +8,7 @@ import { UserComponent } from './user/user.component';
 import { ProductPageComponent } from './product-page/product-page.component';
 import { TecuserComponent } from './tecuser/tecuser.component';
 import { FincauserComponent } from './fincauser/fincauser.component';
-import { ComprauserComponent } from './comprauser/comprauser.component';  
+import { ComprauserComponent } from './comprauser/comprauser.component';
 
 
 
@@ -20,7 +20,7 @@ export const routes: Routes = [
   { path: 'compra', component: CompraPageComponent},
   { path: 'login', component: LoginComponent},
   { path: 'user', component: UserComponent},
-  { path: 'product', component: ProductPageComponent},
+  { path: 'product/:id', component: ProductPageComponent},
   { path: 'tecuser', component: TecuserComponent},
   { path: 'fincauser', component: FincauserComponent},
   { path: 'comprauser', component: ComprauserComponent}

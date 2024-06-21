@@ -1,12 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { ApiService } from '../Services/api.service';
+import { User } from '../models/model';
 
 @Component({
   selector: 'app-navuser',
   standalone: true,
-  imports: [],
+  imports: [HttpClientModule],
   templateUrl: './navuser.component.html',
-  styleUrl: './navuser.component.css'
+  styleUrls: ['./navuser.component.css']
 })
-export class NavuserComponent {
+export class NavuserComponent  {
+
+  userName: string= 'User';
+
+  constructor(private apiService: ApiService) { }
+
 
 }
+

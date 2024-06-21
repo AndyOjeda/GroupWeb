@@ -1,100 +1,97 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { User, Product, Category, Division } from '../models/model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  baseUrl: string = 'http://127.0.0.1:5000/swagger';
+  private apiUrl = 'https://groupweb-backend-jxml.onrender.com';
 
   constructor(private http: HttpClient) { }
 
-  // Métodos CRUD para Usuarios
-
-  getAllUsers(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/usuario`);
+  // User CRUD operations
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.apiUrl}/user`);
   }
 
-  addUser(user: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/usuario`, user);
+  getUser(id: number): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}/user/${id}`);
   }
 
-  updateUser(user: any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/usuario`, user);
+  createUser(user: User): Observable<User> {
+    return this.http.post<User>(`${this.apiUrl}/user`, user);
   }
 
-  deleteUser(userId: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/usuario?idUsuario=${userId}`);
+  updateUser(id: number, user: User): Observable<User> {
+    return this.http.put<User>(`${this.apiUrl}/user/${id}`, user);
   }
 
-  // Métodos CRUD para Productos
-
-  getAllProducts(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/producto`);
+  deleteUser(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/user/${id}`);
   }
 
-  addProduct(product: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/producto`, product);
+  // Product CRUD operations
+  getProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.apiUrl}/product`);
   }
 
-  addProductWithImage(product: any, image: File): Observable<any> {
-    const formData: FormData = new FormData();
-    formData.append('image', image, image.name);
-    formData.append('titulo', product.titulo);
-    formData.append('descripcion', product.descripcion);
-    formData.append('colores', product.colores);
-    formData.append('precio', product.precio);
-    formData.append('idCategoria', product.idCategoria);
-
-    const headers = new HttpHeaders({
-      'enctype': 'multipart/form-data'
-    });
-
-    return this.http.post(`${this.baseUrl}/producto`, formData, { headers: headers });
+  getProduct(id: number): Observable<Product> {
+    return this.http.get<Product>(`${this.apiUrl}/product/${id}`);
   }
 
-  updateProduct(product: any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/producto`, product);
+  createProduct(product: Product): Observable<Product> {
+    return this.http.post<Product>(`${this.apiUrl}/product`, product);
   }
 
-  deleteProduct(productId: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/producto?idProducto=${productId}`);
+  updateProduct(id: number, product: Product): Observable<Product> {
+    return this.http.put<Product>(`${this.apiUrl}/product/${id}`, product);
   }
 
-  // Métodos CRUD para Categorías
-
-  getAllCategories(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/categoria`);
+  deleteProduct(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/product/${id}`);
   }
 
-  addCategory(category: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/categoria`, category);
+  // Category CRUD operations
+  getCategories(): Observable<Category[]> {
+    return this.http.get<Category[]>(`${this.apiUrl}/category`);
   }
 
-  updateCategory(category: any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/categoria`, category);
+  getCategory(id: number): Observable<Category> {
+    return this.http.get<Category>(`${this.apiUrl}/category/${id}`);
   }
 
-  deleteCategory(categoryId: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/categoria?idCategoria=${categoryId}`);
+  createCategory(category: Category): Observable<Category> {
+    return this.http.post<Category>(`${this.apiUrl}/category`, category);
   }
 
-  // Métodos CRUD para Divisiones
-
-  getAllDivisions(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/division`);
+  updateCategory(id: number, category: Category): Observable<Category> {
+    return this.http.put<Category>(`${this.apiUrl}/category/${id}`, category);
   }
 
-  addDivision(division: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/division`, division);
+  deleteCategory(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/category/${id}`);
   }
 
-  updateDivision(division: any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/division`, division);
+  // Division CRUD operations
+  getDivisions(): Observable<Division[]> {
+    return this.http.get<Division[]>(`${this.apiUrl}/division`);
   }
 
-  deleteDivision(divisionId: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/division?idDivision=${divisionId}`);
+  getDivision(id: number): Observable<Division> {
+    return this.http.get<Division>(`${this.apiUrl}/division/${id}`);
+  }
+
+  createDivision(division: Division): Observable<Division> {
+    return this.http.post<Division>(`${this.apiUrl}/division`, division);
+  }
+
+  updateDivision(id: number, division: Division): Observable<Division> {
+    return this.http.put<Division>(`${this.apiUrl}/division/${id}`, division);
+  }
+
+  deleteDivision(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/division/${id}`);
   }
 }

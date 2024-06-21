@@ -7,29 +7,24 @@
 
       <!-- Accordion de Imágenes -->
       <div class="card" style="width: 100%;">
-        <p-galleria 
-            [value]="images" 
-            [showIndicators]="true" 
-            [showThumbnails]="false"  
-            [responsiveOptions]="responsiveOptions" 
+        <p-galleria
+            [value]="images"
+            [showIndicators]="true"
+            [showThumbnails]="false"
+            [responsiveOptions]="responsiveOptions"
             [containerStyle]="{ 'max-width': '640px', 'margin': 'auto' }">
             <ng-template pTemplate="item" let-item>
                 <img [src]="item.itemImageSrc" style="width: 100%; display: block;" />
             </ng-template>
         </p-galleria>
       </div>
-      
+
       <div class="text">
-        <h2 class="secondary-text">Iphone 15 Pro Max</h2>
-        <h4 class="secondary-text">Especificaciones principales</h4>
-          <ul class="text-list third-text">
-            <li>Procesador: A15 Bionic</li>
-            <li>Memoria RAM: 6 GB</li>
-            <li>Almacenamiento: 128 GB</li>
-            <li>Pantalla: 6.7 pulgadas</li>
-            <li>Cámara: 12 MP + 12 MP + 12 MP</li>
-            <li>Batería: 4352 mAh</li>
-          </ul>
+        <div *ngIf="product">
+          <h2 class="secondary-text">{{ product?.title }}</h2>
+          <h4 class="secondary-text">{{ product?.description }}</h4>
+          <h3 class="secondary-text">$ {{ product?.price }}</h3>
+        </div>
 
 
         <button>
@@ -55,7 +50,7 @@
     </div>
   </div>
 
-</div>  
+</div>
 
 
 <div class="d-flex justify-content-center" style="margin: 20px;">

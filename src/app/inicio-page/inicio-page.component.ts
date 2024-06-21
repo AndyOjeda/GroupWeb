@@ -22,4 +22,8 @@ export class InicioPageComponent {
 
   value: string | undefined;
 
+  abrirCorreo() {
+    window.open('mailto:Group_ms@outlook.com');
+  }
+
 }

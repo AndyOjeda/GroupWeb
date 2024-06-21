@@ -6,6 +6,9 @@ import { CarouselModule } from 'primeng/carousel';
 import { NavigationComponent } from '../navigation/navigation.component';
 import { GalleriaModule } from 'primeng/galleria';
 import { HttpClientModule } from '@angular/common/http';
+import { ApiService } from '../Services/api.service';
+import { ActivatedRoute } from '@angular/router';
+import { Product } from '../models/model';
 
 @Component({
   selector: 'app-product-page',
@@ -25,6 +28,10 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class ProductPageComponent implements OnInit {
   images: any[] = [];
+  productId: number | null = null;
+  product: Product | null = null;
+
+  constructor(private route: ActivatedRoute, private apiService: ApiService) { }
 
   responsiveOptions: any[] = [
     {
@@ -41,8 +48,18 @@ export class ProductPageComponent implements OnInit {
     }
   ];
 
-  constructor() {}
+  ngOnInit(): void {
+    // Obtener el ID del producto de la ruta
+    this.route.paramMap.subscribe(params => {
+      const id = params.get('id');
+      if (id !== null) {
+        this.productId = +id;
 
-  ngOnInit() {
+        // Cargar la información detallada del producto
+        this.apiService.getProduct(this.productId).subscribe(data => {
+          this.product = data;
+        });
+      }
+    });
   }
 }
