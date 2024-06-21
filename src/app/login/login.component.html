@@ -8,11 +8,11 @@
 
   </div>
   <div class=" d-flex justify-content-center">
-    <form class="form">
-      <input placeholder="Correo Electronico" class="input" type="text">
-      <input placeholder="Contraseña" class="input" type="password">
+    <form [formGroup]="loginForm" class="form" (ngSubmit)="onSubmit()">
+      <input formControlName="email" id="email" name="email" placeholder="Correo Electronico" class="input" type="email" required>
+      <input formControlName="password" id="password" name="password" placeholder="Contraseña" class="input" type="password" required>
 
-      <button>Submit</button>
+      <button id="button">Submit</button>
     </form>
   </div>
   </div>
