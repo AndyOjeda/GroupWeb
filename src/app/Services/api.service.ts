@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User, Product, Category, Division } from '../models/model';
+import { ProductResponse } from '../inicio-page/dto/InicioDTOs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl = 'https://groupweb-backend-jxml.onrender.com';
+  //private apiUrl = 'https://groupweb-backend-jxml.onrender.com';
+  private apiUrl = 'http://localhost:3000';
 
   constructor(private http: HttpClient) { }
 
@@ -39,6 +41,10 @@ export class ApiService {
 
   getProduct(id: number): Observable<Product> {
     return this.http.get<Product>(`${this.apiUrl}/product/${id}`);
+  }
+
+  getProductsByDivision(): Observable<ProductResponse[]> {
+    return this.http.get<ProductResponse[]>(`${this.apiUrl}/product/division/1`)
   }
 
   createProduct(product: Product): Observable<Product> {
