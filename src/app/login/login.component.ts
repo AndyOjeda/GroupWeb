@@ -51,6 +51,7 @@ export class LoginComponent implements OnChanges {
       this.service.loginUser(this.loginForm.value).subscribe(
         response => {
           console.log("Success")
+          this.router.navigateByUrl('/user')
         },
         error => {
           console.log("Error mi ciela", this.loginForm.value)
