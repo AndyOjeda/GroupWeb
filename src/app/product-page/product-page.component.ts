@@ -57,7 +57,10 @@ export class ProductPageComponent implements OnInit {
 
         // Cargar la información detallada del producto
         this.apiService.getProduct(this.productId).subscribe(data => {
-          this.product = data;
+          this.product = {
+            ...data,
+            image: `http://localhost:3000/product/${data.id}/image`
+          };
         });
       }
     });
