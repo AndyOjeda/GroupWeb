@@ -35,21 +35,25 @@
 </div>
 
 <div class="d-flex wrap justify-content-between" style="margin-left: 2.5rem; margin-right: 2.5rem;">
-  <div class="card-container">
-    <p-card header="Iphone 15 (128 GB)" subheader="$3.500.000" [style]="{ width: '300px'}">
-      <ng-template pTemplate="header">
-        <img alt="Card" src="../../assets/img/IPHONE.png" />
-      </ng-template>
-      <div class="d-flex wrap">
-        <button class="redondo"></button>
-        <button class="redondo"></button>
-        <button class="redondo"></button>
-      </div>
-      <button style="margin-top: 1rem;" type="button" class="card-button">Más Info</button>
-    </p-card>
-  </div>
+  
+  @for (product of data; track $index) {
+    <div class="card-container">
+      <p-card [header]="product.title" [subheader]="product.price" [style]="{ width: '300px'}">
+        <ng-template pTemplate="header">
+          <!-- TODO: TENER TAMAÑO ESPECÍFICO DE LA IMGAEN Y AGREGAR PROPIEDAD OBJECTFIT DE CSS -->
+          <img alt="Card" [src]="product.image" />
+        </ng-template>
+        <div class="d-flex wrap">
+          <button class="redondo"></button>
+          <button class="redondo"></button>
+          <button class="redondo"></button>
+        </div>
+        <button style="margin-top: 1rem;" type="button" class="card-button">Más Info</button>
+      </p-card>
+    </div>
+  }
 
-  <div class="card-container">
+  <!-- <div class="card-container">
     <p-card header="Iphone 15 (128 GB)" subheader="$3.500.000" [style]="{ width: '300px' }">
       <ng-template pTemplate="header">
         <img alt="Card" src="../../assets/img/IPHONE.png" />
@@ -61,35 +65,7 @@
       </div>
       <button style="margin-top: 1rem;" type="button" class="card-button">Más Info</button>
     </p-card>
-  </div>
-
-  <div class="card-container">
-    <p-card header="Iphone 15 (128 GB)" subheader="$3.500.000" [style]="{ width: '300px'}">
-      <ng-template pTemplate="header">
-        <img alt="Card" src="../../assets/img/IPHONE.png" />
-      </ng-template>
-      <div class="d-flex wrap">
-        <button class="redondo"></button>
-        <button class="redondo"></button>
-        <button class="redondo"></button>
-      </div>
-      <button style="margin-top: 1rem;" type="button" class="card-button">Más Info</button>
-    </p-card>
-  </div>
-
-  <div class="card-container">
-    <p-card header="Iphone 15 (128 GB)" subheader="$3.500.000" [style]="{ width: '300px' }">
-      <ng-template pTemplate="header">
-        <img alt="Card" src="../../assets/img/IPHONE.png" />
-      </ng-template>
-      <div class="d-flex wrap">
-        <button class="redondo"></button>
-        <button class="redondo"></button>
-        <button class="redondo"></button>
-      </div>
-      <button style="margin-top: 1rem;" type="button" class="card-button">Más Info</button>
-    </p-card>
-  </div>
+  </div> -->
 </div>
 
 <!-- COMUNICATE CON NOSOTROS -->
