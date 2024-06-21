@@ -2,14 +2,20 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User, Product, Category, Division } from '../models/model';
+import { LoginUserRequest } from '../DTO/LoginUserDTO';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl = 'https://groupweb-backend-jxml.onrender.com';
+  //private apiUrl = 'https://groupweb-backend-jxml.onrender.com';
+  private apiUrl = 'http://localhost:3000'
 
   constructor(private http: HttpClient) { }
+
+  loginUser(loginUser: LoginUserRequest) {
+    return this.http.post<LoginUserRequest>(`${this.apiUrl}/user/login`, loginUser)
+  }
 
   // User CRUD operations
   getUsers(): Observable<User[]> {
