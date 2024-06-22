@@ -13,6 +13,7 @@ import { Product } from '../models/model';
 @Component({
   selector: 'app-product-page',
   standalone: true,
+  providers: [ApiService],
   imports: [
     CardModule,
     InputTextModule,
