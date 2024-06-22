@@ -7,7 +7,7 @@ import { NavigationComponent } from '../navigation/navigation.component';
 import { GalleriaModule } from 'primeng/galleria';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from '../Services/api.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../models/model';
 import { ProductResponse } from '../inicio-page/dto/InicioDTOs';
 
@@ -37,7 +37,7 @@ export class ProductPageComponent implements OnInit {
 
   dataInterest: ProductResponse[] | null = null;
 
-  constructor(private route: ActivatedRoute, private apiService: ApiService) { }
+  constructor(private route: ActivatedRoute, private apiService: ApiService, private router: Router) { }
 
   responsiveOptions: any[] = [
     {
@@ -71,6 +71,8 @@ export class ProductPageComponent implements OnInit {
           }
         })
 
+        console.log(this.dataDetail)
+
         this.apiService.getProductsByCategory(this.dataDetail!.category.id).subscribe({
           next: (response: ProductResponse[]) => {
             this.dataInterest = response.map(product => {
@@ -90,4 +92,11 @@ export class ProductPageComponent implements OnInit {
       }
     });
   }
+
+  navigateToDetailProduct(id: number){
+    this.router.navigate(['product/', id]).then(() => {
+      window.location.reload()
+    })
+  }
+
 }

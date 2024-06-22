@@ -67,7 +67,7 @@
           <p class="cards-title">{{product.title}}
           <p class="cards-info"> {{product.price}} </p>
           <div class="d-flex justify-content-center align-items-center">
-            <button type="button" class="cardsC">Más</button>
+            <button type="button" class="cardsC" (click)="navigateToDetailProduct(product.id)">Más</button>
           </div>
         </div>
       </div>
