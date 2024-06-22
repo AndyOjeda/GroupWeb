@@ -13,6 +13,7 @@ import { Product } from '../models/model';
 @Component({
   selector: 'app-product-page',
   standalone: true,
+  providers: [ApiService],
   imports: [
     CardModule,
     InputTextModule,
@@ -57,7 +58,10 @@ export class ProductPageComponent implements OnInit {
 
         // Cargar la información detallada del producto
         this.apiService.getProduct(this.productId).subscribe(data => {
-          this.product = data;
+          this.product = {
+            ...data,
+            image: `http://localhost:3000/product/${data.id}/image`
+          };
         });
       }
     });

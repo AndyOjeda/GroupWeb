@@ -3,8 +3,7 @@
 <div class="d-flex justify-content-center">
   <div class="main-card shadow">
     <div class="image-product d-flex wrap">
-      <img src="../../assets/img/iphoneBackPng.png" class="img" alt="Iphone 15">
-
+      <img [src]="product?.image" class="img" [alt]="product?.title">
       <!-- Accordion de Imágenes -->
       <div class="card" style="width: 100%;">
         <p-galleria

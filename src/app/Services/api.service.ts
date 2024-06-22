@@ -105,4 +105,9 @@ export class ApiService {
   deleteDivision(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/division/${id}`);
   }
+
+  //news
+  getAllProductsByDivision(id: number){
+    return this.http.get<ProductResponse[]>(`${this.apiUrl}/product/alldivision/${id}`)
+  }
 }
