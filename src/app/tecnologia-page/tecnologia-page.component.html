@@ -14,7 +14,26 @@
 <div class="album">
   <div class="container my-5 justify-content-center">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
-      <div class="col" *ngFor="let product of filteredProducts">
+      @for (product of data; track $index) {
+        <div class="col">
+          <div class="card">
+            <img [src]="product.image" class="card-img-top" alt="{{ product.title }}">
+            <div class="card-body">
+              <p class="card-text card-title">{{ product.title }} <br> ({{ product.description }})</p>
+              <p class="card-text card-info">{{ product.price }}</p>
+              <div class="d-flex justify-content-center align-items-center">
+                <button type="button" class="card-button" (click)="navigateProductInfo(product)">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                    class="bi bi-info-circle" viewBox="0 0 16 16">
+                    <!-- Icono de información -->
+                  </svg> &nbsp; Más Info
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+      <!-- <div class="col" *ngFor="let product of data">
         <div class="card">
           <img [src]="product.image" class="card-img-top" alt="{{ product.title }}">
           <div class="card-body">
@@ -24,13 +43,13 @@
               <button type="button" class="card-button" (click)="showProductInfo(product)">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                   class="bi bi-info-circle" viewBox="0 0 16 16">
-                  <!-- Icono de información -->
+                  <!-- Icono de información
                 </svg> &nbsp; Más Info
               </button>
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
   <br>
