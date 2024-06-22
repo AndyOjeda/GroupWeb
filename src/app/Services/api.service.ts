@@ -44,8 +44,8 @@ export class ApiService {
     return this.http.get<Product[]>(`${this.apiUrl}/product`);
   }
 
-  getProduct(id: number): Observable<Product> {
-    return this.http.get<Product>(`${this.apiUrl}/product/${id}`);
+  getProduct(id: number): Observable<ProductResponse> {
+    return this.http.get<ProductResponse>(`${this.apiUrl}/product/${id}`);
   }
 
   getProductsByDivision(): Observable<ProductResponse[]> {
@@ -109,5 +109,9 @@ export class ApiService {
   //news
   getAllProductsByDivision(id: number){
     return this.http.get<ProductResponse[]>(`${this.apiUrl}/product/alldivision/${id}`)
+  }
+
+  getProductsByCategory(id: number) {
+    return this.http.get<ProductResponse[]>(`${this.apiUrl}/product/allcategory/${id}`)
   }
 }

@@ -4,5 +4,9 @@ export interface ProductResponse {
     title: string,
     description: string,
     colors: string,
-    price: string
+    price: string,
+    category: {
+        id: number,
+        name: string,
+    }
 }
