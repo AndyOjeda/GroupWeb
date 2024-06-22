@@ -3,7 +3,7 @@
 <div class="d-flex justify-content-center">
   <div class="main-card shadow">
     <div class="image-product d-flex wrap">
-      <img [src]="product?.image" class="img" [alt]="product?.title">
+      <img [src]="dataDetail?.image" class="img" [alt]="product?.title">
       <!-- Accordion de Imágenes -->
       <div class="card" style="width: 100%;">
         <p-galleria
@@ -13,16 +13,16 @@
             [responsiveOptions]="responsiveOptions"
             [containerStyle]="{ 'max-width': '640px', 'margin': 'auto' }">
             <ng-template pTemplate="item" let-item>
-                <img [src]="item.itemImageSrc" style="width: 100%; display: block;" />
+                <img [src]="item.itemImageSrc" style="width: 100%; display: block; object-fit: contain;" />
             </ng-template>
         </p-galleria>
       </div>
 
       <div class="text">
-        <div *ngIf="product">
-          <h2 class="secondary-text">{{ product?.title }}</h2>
-          <h4 class="secondary-text">{{ product?.description }}</h4>
-          <h3 class="secondary-text">$ {{ product?.price }}</h3>
+        <div *ngIf="dataDetail">
+          <h2 class="secondary-text">{{ dataDetail.title }}</h2>
+          <h4 class="secondary-text">{{ dataDetail.description }}</h4>
+          <h3 class="secondary-text">$ {{ dataDetail.price }}</h3>
         </div>
 
 
@@ -58,7 +58,23 @@
 
 <div class="d-flex space-evenly">
 
+  @for (product of dataInterest; track $index) {
     <div class="container">
+      <div class="cardsR shadow-sm">
+        <img [src]="product.image" class="cards-img-top" [alt]="product.title">
+        <br>
+        <div class="cards-body">
+          <p class="cards-title">{{product.title}}
+          <p class="cards-info"> {{product.price}} </p>
+          <div class="d-flex justify-content-center align-items-center">
+            <button type="button" class="cardsC">Más</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+
+    <!-- <div class="container">
           <div class="cardsR shadow-sm">
             <img src="../../assets/img/Iphone15.jpg" class="cards-img-top" alt="Iphone 15">
             <br>
@@ -126,7 +142,7 @@
       </div>
     </div>
   </div>
-  </div>
+  </div> -->
 
 
 </div>

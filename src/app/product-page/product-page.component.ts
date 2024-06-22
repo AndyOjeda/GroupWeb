@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from '../Services/api.service';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '../models/model';
+import { ProductResponse } from '../inicio-page/dto/InicioDTOs';
 
 @Component({
   selector: 'app-product-page',
@@ -32,6 +33,10 @@ export class ProductPageComponent implements OnInit {
   productId: number | null = null;
   product: Product | null = null;
 
+  dataDetail: ProductResponse | null = null;
+
+  dataInterest: ProductResponse[] | null = null;
+
   constructor(private route: ActivatedRoute, private apiService: ApiService) { }
 
   responsiveOptions: any[] = [
@@ -54,14 +59,33 @@ export class ProductPageComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       const id = params.get('id');
       if (id !== null) {
-        this.productId = +id;
+        //this.productId = +id;
 
-        // Cargar la información detallada del producto
-        this.apiService.getProduct(this.productId).subscribe(data => {
-          this.product = {
-            ...data,
-            image: `http://localhost:3000/product/${data.id}/image`
-          };
+        this.apiService.getProduct(+id).subscribe({
+          next: (response: ProductResponse) => {
+            this.dataDetail = response;
+            this.dataDetail.image = `http://localhost:3000/product/${this.dataDetail.id}/image`
+          },
+          error: (error) => {
+            console.log('Product Not Found')
+          }
+        })
+
+        this.apiService.getProductsByCategory(this.dataDetail!.category.id).subscribe({
+          next: (response: ProductResponse[]) => {
+            this.dataInterest = response.map(product => {
+              return {
+                ...product,
+                image: `http://localhost:3000/product/${product.id}/image`
+              }
+            })
+            const index = this.dataInterest.findIndex(prod => prod.id === this.dataDetail!.id)
+            this.dataInterest.splice(index, 1)
+            console.log(this.dataInterest)
+          },
+          error: (error) => {
+            console.log('Products Not Found')
+          }
         });
       }
     });
