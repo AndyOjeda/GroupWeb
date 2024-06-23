@@ -63,7 +63,7 @@ export class LoginComponent implements OnChanges {
         error: (err) => {
           Swal.fire({
             title: 'Error',
-            text: err.error.message,
+            text: err,
             icon: 'error'
           })
         }

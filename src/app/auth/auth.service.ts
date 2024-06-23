@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable, computed, signal } from "@angular/core";
 import { LoginUserRequest, LoginUserResponse } from "../DTO/LoginUserDTO";
 import { AuthStatus } from "./interfaces/authstatus.enum";
-import { Observable, map, tap } from "rxjs";
+import { Observable, catchError, map, tap, throwError } from "rxjs";
 
 @Injectable({
     providedIn: 'root'
@@ -27,9 +27,12 @@ export class AuthService{
                 this._authStatus.set(AuthStatus.isAuthenticated);
                 localStorage.setItem('token', res.token);
             }),
-            map( () => true)
+            map( () => true),
 
             //Errores
+            catchError(err => {
+                return throwError(() => 'Invalid Credentials');
+            })
         )
     }
 }
