@@ -14,6 +14,8 @@ import {StyleClassModule} from 'primeng/styleclass';
 import { NavigationComponent } from '../navigation/navigation.component';
 import { LoginUserRequest, LoginUserResponse } from '../DTO/LoginUserDTO';
 import { ApiService } from '../Services/api.service';
+import { AuthService } from '../auth/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -30,7 +32,12 @@ export class LoginComponent implements OnChanges {
 
   loginForm!: FormGroup;
 
-  constructor(private router: Router, private fb: FormBuilder, private readonly service: ApiService) {
+  constructor(
+    private router: Router, 
+    private fb: FormBuilder, 
+    private readonly service: ApiService,
+    private readonly authService: AuthService
+  ) {
     this.loginForm = this.fb.group({
       email: new FormControl('', [Validators.email, Validators.required]),
       password: new FormControl('', [Validators.required]),
@@ -48,7 +55,21 @@ export class LoginComponent implements OnChanges {
 
   onSubmit() {
     if(this.loginForm.valid){
-      this.service.loginUser(this.loginForm.value).subscribe(
+      
+      this.authService.loginUser(this.loginForm.value).subscribe({
+        next: (res) => {
+          this.router.navigate(['user']);
+        },
+        error: (err) => {
+          Swal.fire({
+            title: 'Error',
+            text: err.error.message,
+            icon: 'error'
+          })
+        }
+      });
+      
+      /*this.service.loginUser(this.loginForm.value).subscribe(
         response => {
           console.log("Success")
           this.router.navigateByUrl('/user')
@@ -57,8 +78,7 @@ export class LoginComponent implements OnChanges {
           console.log("Error mi ciela", this.loginForm.value)
         }
       )
+    }*/
     }
   }
-
-
 }

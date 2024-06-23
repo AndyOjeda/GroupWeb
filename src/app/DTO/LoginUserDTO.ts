@@ -4,6 +4,9 @@ export interface LoginUserRequest {
 }
 
 export interface LoginUserResponse {
-    message: string;
-    user: boolean;
+    id: number;
+    email: string;
+    password: string;
+    name: string;
+    token: string;
 }
