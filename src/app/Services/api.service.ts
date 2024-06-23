@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User, Product, Category, Division } from '../models/model';
 import { ProductResponse } from '../inicio-page/dto/InicioDTOs';
-import { LoginUserRequest } from '../DTO/LoginUserDTO';
+import { LoginUserRequest, LoginUserResponse } from '../DTO/LoginUserDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   loginUser(loginUser: LoginUserRequest) {
-    return this.http.post<LoginUserRequest>(`${this.apiUrl}/user/login`, loginUser)
+    return this.http.post<LoginUserResponse>(`${this.apiUrl}/user/login`, loginUser)
   }
 
   // User CRUD operations

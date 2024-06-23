@@ -9,6 +9,8 @@ import { ProductPageComponent } from './product-page/product-page.component';
 import { TecuserComponent } from './tecuser/tecuser.component';
 import { FincauserComponent } from './fincauser/fincauser.component';
 import { ComprauserComponent } from './comprauser/comprauser.component';
+import { isAuthenticatedGuard } from './guards/is-authenticated.guard';
+import { isNotAuthenticatedGuard } from './guards/is-not-authtenticated.guard';
 
 
 
@@ -18,11 +20,11 @@ export const routes: Routes = [
   { path: 'tecnologia', component: TecnologiaPageComponent},
   { path: 'finca', component: FincaPageComponent},
   { path: 'compra', component: CompraPageComponent},
-  { path: 'login', component: LoginComponent},
-  { path: 'user', component: UserComponent},
+  { path: 'login', component: LoginComponent, canActivate: [isNotAuthenticatedGuard]},
+  { path: 'user', component: UserComponent, canActivate: [isAuthenticatedGuard]},
   { path: 'product/:id', component: ProductPageComponent},
-  { path: 'tecuser', component: TecuserComponent},
-  { path: 'fincauser', component: FincauserComponent},
-  { path: 'comprauser', component: ComprauserComponent}
+  { path: 'tecuser', component: TecuserComponent, canActivate: [isAuthenticatedGuard]},
+  { path: 'fincauser', component: FincauserComponent, canActivate: [isAuthenticatedGuard]},
+  { path: 'comprauser', component: ComprauserComponent, canActivate: [isAuthenticatedGuard]}
 
 ];

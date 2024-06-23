@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnChanges, OnInit, SimpleChanges, TemplateRef } from '@angular/core';
+import { Component, computed, effect, inject, Input, OnChanges, OnInit, SimpleChanges, TemplateRef } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { Router} from '@angular/router';
 import { RouterOutlet } from '@angular/router';
@@ -14,6 +14,8 @@ import {StyleClassModule} from 'primeng/styleclass';
 import { NavigationComponent } from '../navigation/navigation.component';
 import { LoginUserRequest, LoginUserResponse } from '../DTO/LoginUserDTO';
 import { ApiService } from '../Services/api.service';
+import { AuthService } from '../auth/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -30,12 +32,43 @@ export class LoginComponent implements OnChanges {
 
   loginForm!: FormGroup;
 
-  constructor(private router: Router, private fb: FormBuilder, private readonly service: ApiService) {
+  constructor(
+    private router: Router, 
+    private fb: FormBuilder, 
+    private readonly service: ApiService,
+    private readonly authService: AuthService,
+  ) {
     this.loginForm = this.fb.group({
       email: new FormControl('', [Validators.email, Validators.required]),
       password: new FormControl('', [Validators.required]),
     });
   }
+
+  // public finishedAuthCheck = computed<boolean>(() => {
+    
+  //   if(this.authService.authStatus() === AuthStatus.checking){
+  //     return false;
+  //   }
+
+  //   return true;
+  // });
+
+  // public authStatusChangedEffect = effect(() => {
+    
+  //   switch(this.authService.authStatus()){
+  //     case AuthStatus.checking:
+  //       return;
+
+  //     case AuthStatus.isAuthenticated:
+  //       this.router.navigate(['user']);
+  //       return;
+      
+  //     case AuthStatus.notAuthenticated:
+  //       this.router.navigate(['/login']);
+  //       return;
+  //   }
+
+  // });
 
   ngOnChanges(changes: SimpleChanges): void {
     if(this.data){
@@ -46,19 +79,24 @@ export class LoginComponent implements OnChanges {
     }
   }
 
+
   onSubmit() {
     if(this.loginForm.valid){
-      this.service.loginUser(this.loginForm.value).subscribe(
-        response => {
-          console.log("Success")
-          this.router.navigateByUrl('/user')
+      
+      this.authService.loginUser(this.loginForm.value).subscribe({
+        next: (res) => {
+          this.router.navigate(['user']).then(() => {
+            window.location.reload()
+          });
         },
-        error => {
-          console.log("Error mi ciela", this.loginForm.value)
+        error: (err) => {
+          Swal.fire({
+            title: 'Error',
+            text: err,
+            icon: 'error'
+          })
         }
-      )
+      });
     }
   }
-
-
 }
