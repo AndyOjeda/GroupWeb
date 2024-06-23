@@ -9,6 +9,7 @@ import { ProductPageComponent } from './product-page/product-page.component';
 import { TecuserComponent } from './tecuser/tecuser.component';
 import { FincauserComponent } from './fincauser/fincauser.component';
 import { ComprauserComponent } from './comprauser/comprauser.component';
+import { isAuthenticatedGuard } from './guards/is-authenticated.guard';
 
 
 
@@ -19,7 +20,7 @@ export const routes: Routes = [
   { path: 'finca', component: FincaPageComponent},
   { path: 'compra', component: CompraPageComponent},
   { path: 'login', component: LoginComponent},
-  { path: 'user', component: UserComponent},
+  { path: 'user', component: UserComponent, canActivate: [isAuthenticatedGuard]},
   { path: 'product/:id', component: ProductPageComponent},
   { path: 'tecuser', component: TecuserComponent},
   { path: 'fincauser', component: FincauserComponent},
