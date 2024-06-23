@@ -18,7 +18,9 @@ export class AuthService{
     public currentUser = computed(() => this._currentUser());
     public authStatus = computed(() => this._authStatus());
 
-    constructor(private http: HttpClient){}
+    constructor(private http: HttpClient){
+      this.checkAuthStatus().subscribe();
+    }
 
     loginUser(loginUser: LoginUserRequest) : Observable<boolean> {
       return this.http.post<LoginUserResponse>(`${this.baseUrl}/auth/login`, loginUser)
@@ -58,5 +60,11 @@ export class AuthService{
             return of(false)
           })
         );
+    }
+
+    logout() {
+      localStorage.removeItem('token');
+      this._currentUser.set(null);
+      this._authStatus.set(AuthStatus.notAuthenticated)
     }
 }

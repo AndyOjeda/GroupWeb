@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnChanges, OnInit, SimpleChanges, TemplateRef } from '@angular/core';
+import { Component, computed, effect, inject, Input, OnChanges, OnInit, SimpleChanges, TemplateRef } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { Router} from '@angular/router';
 import { RouterOutlet } from '@angular/router';
@@ -36,13 +36,39 @@ export class LoginComponent implements OnChanges {
     private router: Router, 
     private fb: FormBuilder, 
     private readonly service: ApiService,
-    private readonly authService: AuthService
+    private readonly authService: AuthService,
   ) {
     this.loginForm = this.fb.group({
       email: new FormControl('', [Validators.email, Validators.required]),
       password: new FormControl('', [Validators.required]),
     });
   }
+
+  // public finishedAuthCheck = computed<boolean>(() => {
+    
+  //   if(this.authService.authStatus() === AuthStatus.checking){
+  //     return false;
+  //   }
+
+  //   return true;
+  // });
+
+  // public authStatusChangedEffect = effect(() => {
+    
+  //   switch(this.authService.authStatus()){
+  //     case AuthStatus.checking:
+  //       return;
+
+  //     case AuthStatus.isAuthenticated:
+  //       this.router.navigate(['user']);
+  //       return;
+      
+  //     case AuthStatus.notAuthenticated:
+  //       this.router.navigate(['/login']);
+  //       return;
+  //   }
+
+  // });
 
   ngOnChanges(changes: SimpleChanges): void {
     if(this.data){
@@ -53,12 +79,15 @@ export class LoginComponent implements OnChanges {
     }
   }
 
+
   onSubmit() {
     if(this.loginForm.valid){
       
       this.authService.loginUser(this.loginForm.value).subscribe({
         next: (res) => {
-          this.router.navigate(['user']);
+          this.router.navigate(['user']).then(() => {
+            window.location.reload()
+          });
         },
         error: (err) => {
           Swal.fire({
@@ -68,17 +97,6 @@ export class LoginComponent implements OnChanges {
           })
         }
       });
-      
-      /*this.service.loginUser(this.loginForm.value).subscribe(
-        response => {
-          console.log("Success")
-          this.router.navigateByUrl('/user')
-        },
-        error => {
-          console.log("Error mi ciela", this.loginForm.value)
-        }
-      )
-    }*/
     }
   }
 }
