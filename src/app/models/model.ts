@@ -7,7 +7,7 @@ export interface User {
 
 export interface Product {
   id?: number;
-  image: string;
+  image: File|string;
   title: string;
   description: string;
   colors: string;

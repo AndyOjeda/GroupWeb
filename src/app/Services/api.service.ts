@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User, Product, Category, Division } from '../models/model';
 import { ProductResponse } from '../inicio-page/dto/InicioDTOs';
 import { LoginUserRequest, LoginUserResponse } from '../DTO/LoginUserDTO';
+import { CategoryPlain, ProductUser, RequestProduct } from '../DTO/productUserDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -52,16 +53,25 @@ export class ApiService {
     return this.http.get<ProductResponse[]>(`${this.apiUrl}/product/division/1`)
   }
 
-  createProduct(product: Product): Observable<Product> {
-    return this.http.post<Product>(`${this.apiUrl}/product`, product);
+  createProduct(product: FormData): Observable<Product> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders()
+      .set('Authorization', `Bearer ${token}`);
+    return this.http.post<Product>(`${this.apiUrl}/product`, product, {headers});
   }
 
-  updateProduct(id: number, product: Product): Observable<Product> {
-    return this.http.put<Product>(`${this.apiUrl}/product/${id}`, product);
+  updateProduct(id: number, product: FormData): Observable<Product> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders()
+      .set('Authorization', `Bearer ${token}`);
+    return this.http.put<Product>(`${this.apiUrl}/product/${id}`, product, {headers});
   }
 
   deleteProduct(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/product/${id}`);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders()
+      .set('Authorization', `Bearer ${token}`);
+    return this.http.delete<void>(`${this.apiUrl}/product/${id}`, {headers});
   }
 
   // Category CRUD operations
@@ -113,5 +123,24 @@ export class ApiService {
 
   getProductsByCategory(id: number) {
     return this.http.get<ProductResponse[]>(`${this.apiUrl}/product/allcategory/${id}`)
+  }
+
+  getProductByUserId(id: number, divisionId: number): Observable<ProductUser[]>{
+    const token = localStorage.getItem('token');
+    const url = `${this.apiUrl}/product/user/${id}/division/${divisionId}`;
+    console.log(token);
+    const headers = new HttpHeaders()
+      .set('Authorization', `Bearer ${token}`)
+    console.log(headers);
+    console.log(id)
+    return this.http.get<ProductUser[]>(url, {headers});
+  }
+
+  getCategoryByUserIdAndDivision(id: number, divId: number): Observable<CategoryPlain[]> {
+    const token = localStorage.getItem('token');
+    const url = `${this.apiUrl}/category/user/${id}/division/${divId}`;
+    const headers = new HttpHeaders()
+      .set('Authorization', `Bearer ${token}`);
+    return this.http.get<CategoryPlain[]>(url, {headers})
   }
 }
