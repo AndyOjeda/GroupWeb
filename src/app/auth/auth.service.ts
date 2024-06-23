@@ -51,6 +51,8 @@ export class AuthService{
         .pipe(
           map((res) => {
             this._currentUser.set(res);
+            localStorage.setItem('userId', String(res.id))
+            //console.log("chekAuthStatus", this.currentUser())
             this._authStatus.set(AuthStatus.isAuthenticated);
             localStorage.setItem('token', res.token);
             return true;
