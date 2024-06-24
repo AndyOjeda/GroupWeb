@@ -37,6 +37,8 @@ export class TecuserComponent implements OnInit, OnChanges{
   Editvisible: boolean = false;
   Deletevisible: boolean = false;
   index: number = 0;
+  selectedProduct: ProductUser | null = null;
+  selectedProductIndex: number | null = null;
 
   files: any[] = [];
   totalSize: number = 0;
@@ -57,8 +59,8 @@ export class TecuserComponent implements OnInit, OnChanges{
   ];
 
   constructor(
-    private config: PrimeNGConfig, 
-    private messageService: MessageService, 
+    private config: PrimeNGConfig,
+    private messageService: MessageService,
     private apiService: ApiService,
     private authService: AuthService,
     private fb: FormBuilder
@@ -73,30 +75,34 @@ export class TecuserComponent implements OnInit, OnChanges{
     })
   }
   ngOnChanges(changes: SimpleChanges): void {
-    
+
   }
 
   ngOnInit(): void {
-    const id = localStorage.getItem('userId')
-    if(id){
+    this.loadProducts();
+  }
+
+  loadProducts(): void {
+    const id = localStorage.getItem('userId');
+    if (id) {
       this.apiService.getProductByUserId(+id, 1).subscribe({
         next: (value) => {
           this.productsUser = value.map(product => {
-            const imageUrl = product.image ? `http://localhost:3000/product/${product.id}/image` : 'No Image'
+            const imageUrl = product.image ? `http://localhost:3000/product/${product.id}/image` : 'No Image';
             return {
               ...product,
               image: imageUrl
-            }
+            };
           });
-          console.log(this.productsUser)
+          console.log(this.productsUser);
         },
         error: (err) => {
-          console.log(err)
+          console.log(err);
           Swal.fire({
             title: 'Error',
             text: err.message,
             icon: 'error'
-          })
+          });
         }
       });
     }
@@ -146,9 +152,11 @@ export class TecuserComponent implements OnInit, OnChanges{
     this.Editvisible = true;
   }
 
-  showDeleteDialog() {
+  showDeleteDialog(product: ProductUser, index: number) {
+    this.selectedProduct = product;
+    this.selectedProductIndex = index;
     this.Deletevisible = true;
-   }
+  }
 
    choose(event: any, callback: () => void) {
     callback();
@@ -219,7 +227,7 @@ export class TecuserComponent implements OnInit, OnChanges{
       formData.append('colors', this.productForm.get('colors')?.value);
       formData.append('price', this.productForm.get('price')?.value);
       formData.append('categoryId', this.productForm.get('category')?.value);
-      
+
       console.log(image.toString());
       //POST
       const req : Product = {
@@ -232,11 +240,17 @@ export class TecuserComponent implements OnInit, OnChanges{
       }
       this.apiService.createProduct(formData).subscribe({
         next: () => {
+          this.visible = false;
+          this.Editvisible = false;
+
           Swal.fire({
             title: 'Success',
             text: 'Se ha creado el producto',
             icon: 'success'
           });
+          setTimeout(function() {
+            location.reload();
+          }, 2000);
         },
         error: (err) => {
           Swal.fire({
@@ -250,6 +264,7 @@ export class TecuserComponent implements OnInit, OnChanges{
   }
 
   save(){
+    this.Editvisible = false;
     console.log('click guardar')
   }
 
@@ -287,6 +302,7 @@ export class TecuserComponent implements OnInit, OnChanges{
         }
         this.apiService.updateProduct(product.id, formData).subscribe({
           next: () => {
+            this.Editvisible = false;
             Swal.fire({
               title: 'Success',
               text: 'Se ha actualizado el producto',
@@ -307,7 +323,42 @@ export class TecuserComponent implements OnInit, OnChanges{
   }
 
   cancelAction(){
-    //this.Editvisible = false;
+    this.Editvisible = false;
+    this.Deletevisible = false;
+  }
+
+  deleteProduct() {
+    if (this.selectedProduct && this.selectedProductIndex !== null) {
+      const productId = this.selectedProduct.id;
+      this.apiService.deleteProduct(productId).subscribe({
+        next: () => {
+          this.productsUser?.splice(this.selectedProductIndex!, 1); // Ensure non-null assertion here
+          this.selectedProduct = null;
+          this.selectedProductIndex = null;
+          this.Deletevisible = false;
+          Swal.fire({ title: 'Eliminado', text: 'Producto eliminado correctamente', icon: 'success' });
+        },
+        error: (err) => {
+          Swal.fire({ title: 'Error', text: err.message, icon: 'error' });
+        }
+      });
+    }
+  }
+
+  adjustCardHeights(): void {
+    const cards = document.querySelectorAll('.product-card');
+    let maxHeight = 0;
+
+    cards.forEach(card => {
+      const cardHeight = card.clientHeight;
+      if (cardHeight > maxHeight) {
+        maxHeight = cardHeight;
+      }
+    });
+
+    cards.forEach(card => {
+      (card as HTMLElement).style.height = `${maxHeight}px`;
+    });
   }
 
 

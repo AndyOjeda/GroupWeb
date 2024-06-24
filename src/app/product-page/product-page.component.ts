@@ -99,4 +99,11 @@ export class ProductPageComponent implements OnInit {
     })
   }
 
+  openWhatsapp() {
+    const phoneNumber = '573001234567';
+    const message = 'Hola, estoy interesado en el producto (nombre del producto)';
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
+  }
+
 }

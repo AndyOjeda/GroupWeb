@@ -13,8 +13,8 @@ app-sidebar {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1000; 
-  
+  z-index: 1000;
+
 }
 
 app-sidebar.collapsed {
@@ -22,7 +22,8 @@ app-sidebar.collapsed {
 }
 
 .main-content {
-  margin-left: 15rem; /* Debe coincidir con el ancho de la sidebar */
+  margin-top: 2rem;
+  margin-left: 10rem; /* Debe coincidir con el ancho de la sidebar */
   flex-grow: 1;
   display: flex;
   justify-content: center;
@@ -49,7 +50,7 @@ app-sidebar.collapsed {
   background-color: #D2D4D6;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   border: 1px solid transparent;
-  width: 20rem;
+  width: 22rem;
   height: 22rem;
   z-index: 100;
 }
@@ -143,15 +144,15 @@ app-sidebar.collapsed {
     width: 20rem;
     height: 22rem;
   }
-  
+
   .card a {
     text-decoration: none
   }
-  
+
   .content {
     padding: 1.1rem;
   }
-  
+
   .image {
     object-fit: cover;
     width: 80%;
@@ -163,21 +164,21 @@ app-sidebar.collapsed {
     display: flex;
 
   }
-  
+
   .title {
     color: #111827;
     font-size: 1.125rem;
     line-height: 1.75rem;
     font-weight: 600;
   }
-  
+
   .desc {
     margin-top: 0.5rem;
     color: #6B7280;
     font-size: 0.875rem;
     line-height: 1.25rem;
   }
-  
+
 
 
   body, html {
@@ -225,7 +226,7 @@ app-sidebar.collapsed {
     font-size: 1.4rem;
     align-items: center;
     justify-content: center;
-    
+
 }
 
 .third-text{
@@ -255,7 +256,7 @@ app-sidebar.collapsed {
 
 .action-button {
   display: inline-flex;
-  align-items: center; 
+  align-items: center;
   padding: 0.4rem;
   border: 1px solid white;
   background-color: white;
@@ -318,7 +319,7 @@ app-sidebar.collapsed {
 
 .buttons{
   display: inline-flex;
-  align-items: center; 
+  align-items: center;
   padding: 0.4rem;
   border: 1px solid white;
   background-color: white;

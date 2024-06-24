@@ -1,18 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges, computed } from '@angular/core';
 import { NavuserComponent } from "../navuser/navuser.component";
 import { SidebarModule } from "../sidebar/sidebar.module";
-import { HttpClientModule } from '@angular/common/http';
 import { RouterOutlet } from '@angular/router';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { FileUploadModule } from 'primeng/fileupload';
 import { CommonModule } from '@angular/common';
 import { BadgeModule } from 'primeng/badge';
+import { HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { ToastModule } from 'primeng/toast';
+import { CategoryPlain, ProductUser, RequestProduct } from '../DTO/productUserDTO';
+import { ApiService } from '../Services/api.service';
+import { AuthService } from '../auth/auth.service';
+import Swal from 'sweetalert2';
+import { title } from 'process';
+import { Product } from '../models/model';
 
 
 @Component({
@@ -20,18 +26,29 @@ import { ToastModule } from 'primeng/toast';
     standalone: true,
     templateUrl: './fincauser.component.html',
     styleUrl: './fincauser.component.css',
-    imports: [NavuserComponent, SidebarModule, HttpClientModule, DialogModule, ButtonModule, InputTextModule, FormsModule, FileUploadModule, BadgeModule, ProgressBarModule, ToastModule, CommonModule],
+    imports: [NavuserComponent, SidebarModule, HttpClientModule, DialogModule, ButtonModule, InputTextModule, FormsModule, FileUploadModule,
+      BadgeModule, ProgressBarModule, ToastModule, CommonModule, ReactiveFormsModule],
     providers: [MessageService]
 })
-export class FincauserComponent {
+export class FincauserComponent implements OnInit, OnChanges {
   visible: boolean = false;
   Editvisible: boolean = false;
   Deletevisible: boolean = false;
   index: number = 0;
+  selectedProduct: ProductUser | null = null;
+  selectedProductIndex: number | null = null;
 
   files: any[] = [];
   totalSize: number = 0;
   totalSizePercent: number = 0;
+
+  //Fetch Variables
+  productsUser: ProductUser[] | null = null;
+  categoryUser: CategoryPlain[] | null = null;
+
+  //Form
+  productForm!: FormGroup;
+  selectedFile: File | null = null;
 
   items = [
     { name: 'Item 1' },
@@ -39,19 +56,105 @@ export class FincauserComponent {
     { name: 'Item 3' }
   ];
 
-  constructor(private config: PrimeNGConfig, private messageService: MessageService) {}
+  constructor(
+    private config: PrimeNGConfig,
+    private messageService: MessageService,
+    private apiService: ApiService,
+    private authService: AuthService,
+    private fb: FormBuilder
+  ) {
+    this.productForm = this.fb.group({
+      title: new FormControl('', [Validators.required]),
+      price: new FormControl('', [Validators.required]),
+      description: new FormControl('', [Validators.required]),
+      color: new FormControl('', [Validators.required]),
+      category: new FormControl('', [Validators.required]),
+      image: new FormControl(null)
+    })
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+
+  }
+
+  ngOnInit(): void {
+    this.loadProducts();
+  }
+
+  loadProducts(): void {
+    const id = localStorage.getItem('userId');
+    if (id) {
+      this.apiService.getProductByUserId(+id, 2).subscribe({
+        next: (value) => {
+          this.productsUser = value.map(product => {
+            const imageUrl = product.image ? `http://localhost:3000/product/${product.id}/image` : 'No Image';
+            return {
+              ...product,
+              image: imageUrl
+            };
+          });
+          console.log(this.productsUser);
+        },
+        error: (err) => {
+          console.log(err);
+          Swal.fire({
+            title: 'Error',
+            text: err.message,
+            icon: 'error'
+          });
+        }
+      });
+    }
+  }
 
   showDialog() {
+    this.fetchCategory();
+    this.productForm.patchValue({
+      title: '',
+      price: '',
+      description: '',
+      color: '',
+      category: ''
+    });
     this.visible = true;
   }
 
-  showEditDialog() {
+  fetchCategory(){
+    const id = localStorage.getItem('userId');
+    if(id){
+      this.apiService.getCategoryByUserIdAndDivision(+id, 1).subscribe({
+        next: (res) => {
+          this.categoryUser = res;
+        },
+        error: (err) => {
+          console.log(err)
+          Swal.fire({
+            title: 'Error',
+            text: err.message,
+            icon: 'error'
+          })
+        }
+      });
+    }
+  }
+
+  showEditDialog(product: ProductUser, index: number) {
+    this.fetchCategory();
+    this.productForm.patchValue({
+      title: product.title,
+      price: product.price,
+      description: product.description,
+      color: product.colors,
+      category: product.category
+    });
+    //console.log(this.productForm.value)
     this.Editvisible = true;
   }
 
-  showDeleteDialog() {
+  showDeleteDialog(product: ProductUser, index: number) {
+    this.selectedProduct = product;
+    this.selectedProductIndex = index;
     this.Deletevisible = true;
-   }
+  }
 
    choose(event: any, callback: () => void) {
     callback();
@@ -103,4 +206,158 @@ export class FincauserComponent {
 
     return `${formattedSize} ${sizes[i]}`;
   }
+
+  onNewSubmit(){
+    if(this.productForm.valid){
+
+      let formData: FormData = new FormData();
+
+      let image : File | string;
+      if(this.files.length !== 0){
+        image = this.files[0]
+      }else{
+        image = 'no dir';
+      }
+
+      formData.append('image', image);
+      formData.append('title', this.productForm.get('title')?.value);
+      formData.append('description', this.productForm.get('description')?.value);
+      formData.append('colors', this.productForm.get('colors')?.value);
+      formData.append('price', this.productForm.get('price')?.value);
+      formData.append('categoryId', this.productForm.get('category')?.value);
+
+      console.log(image.toString());
+      //POST
+      const req : Product = {
+        image: image,
+        title: this.productForm.get('title')?.value,
+        description: this.productForm.get('description')?.value,
+        colors: this.productForm.get('colors')?.value,
+        price: this.productForm.get('price')?.value,
+        categoryId: this.productForm.get('category')?.value,
+      }
+      this.apiService.createProduct(formData).subscribe({
+        next: () => {
+          this.visible = false;
+          this.Editvisible = false;
+
+          Swal.fire({
+            title: 'Success',
+            text: 'Se ha creado el producto',
+            icon: 'success'
+          });
+          setTimeout(function() {
+            location.reload();
+          }, 2000);
+        },
+        error: (err) => {
+          Swal.fire({
+            title: 'Error',
+            text: err.message,
+            icon: 'error'
+          });
+        }
+      });
+    }
+  }
+
+  save(){
+    this.Editvisible = false;
+    console.log('click guardar')
+  }
+
+  onSubmit(product: ProductUser | null){
+    console.log('Entra al submit')
+    if(this.productForm.valid){
+
+      //mapper
+      //PUT
+      if(product?.id){
+        let image : File | string;
+        if(this.files.length !== 0){
+          image = this.files[0]
+        }else{
+          image = product.image;
+        }
+
+        let formData : FormData = new FormData();
+        formData.append('id', this.productForm.get('id')?.value);
+        formData.append('image', image);
+        formData.append('title', this.productForm.get('title')?.value);
+        formData.append('description', this.productForm.get('description')?.value);
+        formData.append('colors', this.productForm.get('colors')?.value);
+        formData.append('price', this.productForm.get('price')?.value);
+        formData.append('categoryId', this.productForm.get('category')?.value);
+
+        const req : Product = {
+          id: product.id,
+          image: image,
+          title: this.productForm.get('title')?.value,
+          description: this.productForm.get('description')?.value,
+          colors: this.productForm.get('colors')?.value,
+          price: this.productForm.get('price')?.value,
+          categoryId: this.productForm.get('category')?.value,
+        }
+        this.apiService.updateProduct(product.id, formData).subscribe({
+          next: () => {
+            this.Editvisible = false;
+            Swal.fire({
+              title: 'Success',
+              text: 'Se ha actualizado el producto',
+              icon: 'success'
+            });
+          },
+          error: (err) => {
+            Swal.fire({
+              title: 'Error',
+              text: err.message,
+              icon: 'error'
+            });
+          }
+        });
+        return;
+      }
+    }
+  }
+
+  cancelAction(){
+    this.Editvisible = false;
+    this.Deletevisible = false;
+  }
+
+  deleteProduct() {
+    if (this.selectedProduct && this.selectedProductIndex !== null) {
+      const productId = this.selectedProduct.id;
+      this.apiService.deleteProduct(productId).subscribe({
+        next: () => {
+          this.productsUser?.splice(this.selectedProductIndex!, 1); // Ensure non-null assertion here
+          this.selectedProduct = null;
+          this.selectedProductIndex = null;
+          this.Deletevisible = false;
+          Swal.fire({ title: 'Eliminado', text: 'Producto eliminado correctamente', icon: 'success' });
+        },
+        error: (err) => {
+          Swal.fire({ title: 'Error', text: err.message, icon: 'error' });
+        }
+      });
+    }
+  }
+
+  adjustCardHeights(): void {
+    const cards = document.querySelectorAll('.product-card');
+    let maxHeight = 0;
+
+    cards.forEach(card => {
+      const cardHeight = card.clientHeight;
+      if (cardHeight > maxHeight) {
+        maxHeight = cardHeight;
+      }
+    });
+
+    cards.forEach(card => {
+      (card as HTMLElement).style.height = `${maxHeight}px`;
+    });
+  }
+
+
 }

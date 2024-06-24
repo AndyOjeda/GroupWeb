@@ -17,9 +17,9 @@
       @for (product of data; track $index) {
         <div class="col">
           <div class="card">
-            <img [src]="product.image" class="card-img-top" alt="{{ product.title }}">
+            <img [src]="product.image" class="card-img-top" alt="{{ product.title }}"  style="padding: 10px;">
             <div class="card-body">
-              <p class="card-text card-title">{{ product.title }} <br> ({{ product.description }})</p>
+              <p class="card-text card-title">{{ product.title }} <br> ({{ product.colors }})</p>
               <p class="card-text card-info">{{ product.price }}</p>
               <div class="d-flex justify-content-center align-items-center">
                 <button type="button" class="card-button" (click)="navigateProductInfo(product)">
