@@ -143,4 +143,14 @@ export class ApiService {
       .set('Authorization', `Bearer ${token}`);
     return this.http.get<CategoryPlain[]>(url, {headers})
   }
+
+  getCategoryProductByDivision(id: number): Observable<ProductUser[]>{
+    const url = `${this.apiUrl}/product/division/${id}`;
+    return this.http.get<ProductUser[]>(url)
+  }
+
+  getCategoryByDivision(id: number) : Observable<CategoryPlain[]> {
+    const url = `${this.apiUrl}/category/division/${id}`;
+    return this.http.get<CategoryPlain[]>(url);
+  }
 }

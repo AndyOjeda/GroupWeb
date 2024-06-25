@@ -7,6 +7,8 @@ import { Product } from '../models/model';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { ProductResponse } from '../inicio-page/dto/InicioDTOs';
+import { CategoryPlain } from '../DTO/productUserDTO';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -23,6 +25,9 @@ export class TecnologiaPageComponent {
   product: Product | null = null;
 
   data: ProductResponse[] | null = null;
+
+  //filter
+  categoryUser : CategoryPlain[] | null = null;
 
   constructor(private route: ActivatedRoute,
               private apiService: ApiService,
@@ -57,11 +62,42 @@ export class TecnologiaPageComponent {
         console.log('Products Not Found')
       }
     });
+
+    this.loadCategories()
   }
 
   navigateProductInfo(product: ProductResponse){
     this.router.navigate(['/product', product.id])
   }
+
+  //load categories by division
+  loadCategories(){
+    //tech = 1 || finca = 2 || compra-venta = 3
+    this.apiService.getCategoryByDivision(1).subscribe({
+      next: (res) => {
+        this.categoryUser = res;
+      },
+      error: (err) => {
+        Swal.fire({title: 'Error', text: err.message, icon:'error'})
+      }
+    });
+  }
+
+  loadProductsByCategory(event: Event){
+    //console.log(event.target);
+    const selectedElement = event.target as HTMLSelectElement;
+    const categoryId = selectedElement.value
+    console.log(categoryId);
+    this.apiService.getProductsByCategory(+categoryId).subscribe({
+      next: (res) => {
+        this.data = res;
+      },
+      error: (err) => {
+        Swal.fire({title: 'Error', text: err.message, icon:'error'})
+      }
+    })
+  }
+  
 
   /*showProductInfo(product: Product) {
     // Navegar a la página del producto y pasar el ID del producto como parámetro
