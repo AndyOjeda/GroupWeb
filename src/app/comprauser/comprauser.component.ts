@@ -49,6 +49,7 @@ export class ComprauserComponent {
   index: number = 0;
   selectedProduct: ProductUser = EMPTY_PRODUCT;
   selectedProductIndex: number | null = null;
+  categoryDialogVisible: boolean = false;
 
   files: any[] = [];
   totalSize: number = 0;
@@ -60,7 +61,11 @@ export class ComprauserComponent {
 
   //Form
   productForm!: FormGroup;
+  categoryForm!: FormGroup;
   selectedFile: File | null = null;
+
+  divisions: string[] = ['Tecnologia', 'Finca Raiz', 'Compra - Venta'];
+  currentUser: string = localStorage.getItem('userId') || '';
 
   items = [
     { name: 'Item 1' },
@@ -128,6 +133,10 @@ export class ComprauserComponent {
       category: ''
     });
     this.visible = true;
+  }
+
+  showCategoryDialog() {
+    this.categoryDialogVisible = true;
   }
 
   fetchCategory(){
@@ -378,6 +387,31 @@ export class ComprauserComponent {
     cards.forEach(card => {
       (card as HTMLElement).style.height = `${maxHeight}px`;
     });
+  }
+
+  onCategorySubmit() {
+    if (this.categoryForm.valid) {
+      const newCategory = this.categoryForm.value;
+
+      this.apiService.createCategory(newCategory).subscribe({
+        next: () => {
+          this.categoryDialogVisible = false;
+          Swal.fire({
+            title: 'Success',
+            text: 'Se ha creado la categoría',
+            icon: 'success'
+          });
+          this.fetchCategory();
+        },
+        error: (err) => {
+          Swal.fire({
+            title: 'Error',
+            text: err.message,
+            icon: 'error'
+          });
+        }
+      });
+    }
   }
 
 

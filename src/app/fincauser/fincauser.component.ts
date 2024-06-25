@@ -34,6 +34,7 @@ export class FincauserComponent implements OnInit, OnChanges {
   visible: boolean = false;
   Editvisible: boolean = false;
   Deletevisible: boolean = false;
+  categoryDialogVisible: boolean = false;
   index: number = 0;
   selectedProduct: ProductUser = EMPTY_PRODUCT;
   selectedProductIndex: number | null = null;
@@ -48,7 +49,11 @@ export class FincauserComponent implements OnInit, OnChanges {
 
   //Form
   productForm!: FormGroup;
+  categoryForm!: FormGroup;
   selectedFile: File | null = null;
+
+  divisions: string[] = ['Tecnologia', 'Finca Raiz', 'Compra - Venta'];
+  currentUser: string = localStorage.getItem('userId') || '';
 
   items = [
     { name: 'Item 1' },
@@ -104,6 +109,10 @@ export class FincauserComponent implements OnInit, OnChanges {
         }
       });
     }
+  }
+
+  showCategoryDialog() {
+    this.categoryDialogVisible = true;
   }
 
   showDialog() {
@@ -366,6 +375,31 @@ export class FincauserComponent implements OnInit, OnChanges {
     cards.forEach(card => {
       (card as HTMLElement).style.height = `${maxHeight}px`;
     });
+  }
+
+  onCategorySubmit() {
+    if (this.categoryForm.valid) {
+      const newCategory = this.categoryForm.value;
+
+      this.apiService.createCategory(newCategory).subscribe({
+        next: () => {
+          this.categoryDialogVisible = false;
+          Swal.fire({
+            title: 'Success',
+            text: 'Se ha creado la categoría',
+            icon: 'success'
+          });
+          this.fetchCategory();
+        },
+        error: (err) => {
+          Swal.fire({
+            title: 'Error',
+            text: err.message,
+            icon: 'error'
+          });
+        }
+      });
+    }
   }
 
 

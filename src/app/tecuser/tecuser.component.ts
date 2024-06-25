@@ -19,6 +19,7 @@ import { AuthService } from '../auth/auth.service';
 import Swal from 'sweetalert2';
 import { title } from 'process';
 import { Product } from '../models/model';
+import { Category } from '../models/model';
 
 @Component({
   selector: 'app-tecuser',
@@ -36,6 +37,7 @@ export class TecuserComponent implements OnInit, OnChanges{
   visible: boolean = false;
   Editvisible: boolean = false;
   Deletevisible: boolean = false;
+  categoryDialogVisible: boolean = false;
   index: number = 0;
   selectedProduct: ProductUser = EMPTY_PRODUCT;
   selectedProductIndex: number | null = null;
@@ -50,7 +52,11 @@ export class TecuserComponent implements OnInit, OnChanges{
 
   //Form
   productForm!: FormGroup;
+  categoryForm!: FormGroup;
   selectedFile: File | null = null;
+
+  divisions: string[] = ['Tecnologia', 'Finca Raiz', 'Compra - Venta'];
+  currentUser: string = localStorage.getItem('userId') || '';
 
   items = [
     { name: 'Item 1' },
@@ -119,6 +125,10 @@ export class TecuserComponent implements OnInit, OnChanges{
       category: ''
     });
     this.visible = true;
+  }
+
+  showCategoryDialog() {
+    this.categoryDialogVisible = true;
   }
 
   fetchCategory(){
@@ -352,21 +362,31 @@ export class TecuserComponent implements OnInit, OnChanges{
     });
   }
 
-  adjustCardHeights(): void {
-    const cards = document.querySelectorAll('.product-card');
-    let maxHeight = 0;
+  onCategorySubmit() {
+    if (this.categoryForm.valid) {
+      const newCategory = this.categoryForm.value;
 
-    cards.forEach(card => {
-      const cardHeight = card.clientHeight;
-      if (cardHeight > maxHeight) {
-        maxHeight = cardHeight;
-      }
-    });
-
-    cards.forEach(card => {
-      (card as HTMLElement).style.height = `${maxHeight}px`;
-    });
+      this.apiService.createCategory(newCategory).subscribe({
+        next: () => {
+          this.categoryDialogVisible = false;
+          Swal.fire({
+            title: 'Success',
+            text: 'Se ha creado la categoría',
+            icon: 'success'
+          });
+          this.fetchCategory();
+        },
+        error: (err) => {
+          Swal.fire({
+            title: 'Error',
+            text: err.message,
+            icon: 'error'
+          });
+        }
+      });
+    }
   }
 
 
 }
+
