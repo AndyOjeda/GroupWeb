@@ -60,7 +60,7 @@ export class ApiService {
     return this.http.post<Product>(`${this.apiUrl}/product`, product, {headers});
   }
 
-  updateProduct(id: number, product: FormData): Observable<Product> {
+  updateProduct(id: number, product: FormData | Product): Observable<Product> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders()
       .set('Authorization', `Bearer ${token}`);

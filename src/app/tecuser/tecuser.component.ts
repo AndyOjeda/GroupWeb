@@ -13,7 +13,7 @@ import { BadgeModule } from 'primeng/badge';
 import { HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { ToastModule } from 'primeng/toast';
-import { CategoryPlain, ProductUser, RequestProduct } from '../DTO/productUserDTO';
+import { CategoryPlain, EMPTY_PRODUCT, ProductUser, RequestProduct } from '../DTO/productUserDTO';
 import { ApiService } from '../Services/api.service';
 import { AuthService } from '../auth/auth.service';
 import Swal from 'sweetalert2';
@@ -37,7 +37,7 @@ export class TecuserComponent implements OnInit, OnChanges{
   Editvisible: boolean = false;
   Deletevisible: boolean = false;
   index: number = 0;
-  selectedProduct: ProductUser | null = null;
+  selectedProduct: ProductUser = EMPTY_PRODUCT;
   selectedProductIndex: number | null = null;
 
   files: any[] = [];
@@ -72,7 +72,8 @@ export class TecuserComponent implements OnInit, OnChanges{
       color: new FormControl('', [Validators.required]),
       category: new FormControl('', [Validators.required]),
       image: new FormControl(null)
-    })
+    });
+    this.loadProducts();
   }
   ngOnChanges(changes: SimpleChanges): void {
 
@@ -152,9 +153,11 @@ export class TecuserComponent implements OnInit, OnChanges{
     this.Editvisible = true;
   }
 
-  showDeleteDialog(product: ProductUser, index: number) {
+  showDeleteDialog(product: ProductUser) {
     this.selectedProduct = product;
-    this.selectedProductIndex = index;
+    console.log(product)
+    //this.selectedProduct = product;
+    //this.selectedProductIndex = index;
     this.Deletevisible = true;
   }
 
@@ -224,7 +227,7 @@ export class TecuserComponent implements OnInit, OnChanges{
       formData.append('image', image);
       formData.append('title', this.productForm.get('title')?.value);
       formData.append('description', this.productForm.get('description')?.value);
-      formData.append('colors', this.productForm.get('colors')?.value);
+      formData.append('colors', this.productForm.get('color')?.value);
       formData.append('price', this.productForm.get('price')?.value);
       formData.append('categoryId', this.productForm.get('category')?.value);
 
@@ -282,24 +285,26 @@ export class TecuserComponent implements OnInit, OnChanges{
           image = product.image;
         }
 
+        console.log(this.productForm.value);
+
         let formData : FormData = new FormData();
-        formData.append('id', this.productForm.get('id')?.value);
         formData.append('image', image);
         formData.append('title', this.productForm.get('title')?.value);
         formData.append('description', this.productForm.get('description')?.value);
-        formData.append('colors', this.productForm.get('colors')?.value);
+        formData.append('colors', this.productForm.get('color')?.value);
         formData.append('price', this.productForm.get('price')?.value);
         formData.append('categoryId', this.productForm.get('category')?.value);
 
         const req : Product = {
-          id: product.id,
+          //id: product.id,
           image: image,
           title: this.productForm.get('title')?.value,
           description: this.productForm.get('description')?.value,
-          colors: this.productForm.get('colors')?.value,
+          colors: this.productForm.get('color')?.value,
           price: this.productForm.get('price')?.value,
           categoryId: this.productForm.get('category')?.value,
         }
+        console.log(req)
         this.apiService.updateProduct(product.id, formData).subscribe({
           next: () => {
             this.Editvisible = false;
@@ -328,7 +333,25 @@ export class TecuserComponent implements OnInit, OnChanges{
   }
 
   deleteProduct() {
-    if (this.selectedProduct && this.selectedProductIndex !== null) {
+    console.log(this.selectedProduct);
+    this.apiService.deleteProduct(this.selectedProduct.id).subscribe({
+      next: () => {
+        Swal.fire({
+          title: 'Success',
+          text: 'Se ha eliminado el producto',
+          icon: 'success'
+        })
+      },
+      error: (err) => {
+        Swal.fire({
+          title: 'Error',
+          text: err.message,
+          icon: 'error'
+        })
+      }
+    });
+
+    /*if (this.selectedProduct && this.selectedProductIndex !== null) {
       const productId = this.selectedProduct.id;
       this.apiService.deleteProduct(productId).subscribe({
         next: () => {
@@ -342,7 +365,7 @@ export class TecuserComponent implements OnInit, OnChanges{
           Swal.fire({ title: 'Error', text: err.message, icon: 'error' });
         }
       });
-    }
+    }*/
   }
 
   adjustCardHeights(): void {
