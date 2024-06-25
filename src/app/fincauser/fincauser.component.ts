@@ -13,7 +13,7 @@ import { BadgeModule } from 'primeng/badge';
 import { HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { ToastModule } from 'primeng/toast';
-import { CategoryPlain, ProductUser, RequestProduct } from '../DTO/productUserDTO';
+import { CategoryPlain, EMPTY_PRODUCT, ProductUser, RequestProduct } from '../DTO/productUserDTO';
 import { ApiService } from '../Services/api.service';
 import { AuthService } from '../auth/auth.service';
 import Swal from 'sweetalert2';
@@ -35,7 +35,7 @@ export class FincauserComponent implements OnInit, OnChanges {
   Editvisible: boolean = false;
   Deletevisible: boolean = false;
   index: number = 0;
-  selectedProduct: ProductUser | null = null;
+  selectedProduct: ProductUser = EMPTY_PRODUCT;
   selectedProductIndex: number | null = null;
 
   files: any[] = [];
@@ -121,7 +121,7 @@ export class FincauserComponent implements OnInit, OnChanges {
   fetchCategory(){
     const id = localStorage.getItem('userId');
     if(id){
-      this.apiService.getCategoryByUserIdAndDivision(+id, 1).subscribe({
+      this.apiService.getCategoryByUserIdAndDivision(+id, 2).subscribe({
         next: (res) => {
           this.categoryUser = res;
         },
@@ -222,7 +222,7 @@ export class FincauserComponent implements OnInit, OnChanges {
       formData.append('image', image);
       formData.append('title', this.productForm.get('title')?.value);
       formData.append('description', this.productForm.get('description')?.value);
-      formData.append('colors', this.productForm.get('colors')?.value);
+      formData.append('colors', this.productForm.get('color')?.value);
       formData.append('price', this.productForm.get('price')?.value);
       formData.append('categoryId', this.productForm.get('category')?.value);
 
@@ -232,7 +232,7 @@ export class FincauserComponent implements OnInit, OnChanges {
         image: image,
         title: this.productForm.get('title')?.value,
         description: this.productForm.get('description')?.value,
-        colors: this.productForm.get('colors')?.value,
+        colors: this.productForm.get('color')?.value,
         price: this.productForm.get('price')?.value,
         categoryId: this.productForm.get('category')?.value,
       }
@@ -285,7 +285,7 @@ export class FincauserComponent implements OnInit, OnChanges {
         formData.append('image', image);
         formData.append('title', this.productForm.get('title')?.value);
         formData.append('description', this.productForm.get('description')?.value);
-        formData.append('colors', this.productForm.get('colors')?.value);
+        formData.append('colors', this.productForm.get('color')?.value);
         formData.append('price', this.productForm.get('price')?.value);
         formData.append('categoryId', this.productForm.get('category')?.value);
 
@@ -294,7 +294,7 @@ export class FincauserComponent implements OnInit, OnChanges {
           image: image,
           title: this.productForm.get('title')?.value,
           description: this.productForm.get('description')?.value,
-          colors: this.productForm.get('colors')?.value,
+          colors: this.productForm.get('color')?.value,
           price: this.productForm.get('price')?.value,
           categoryId: this.productForm.get('category')?.value,
         }
@@ -326,7 +326,16 @@ export class FincauserComponent implements OnInit, OnChanges {
   }
 
   deleteProduct() {
-    if (this.selectedProduct && this.selectedProductIndex !== null) {
+
+    this.apiService.deleteProduct(this.selectedProduct.id).subscribe({
+      next: () => {
+        Swal.fire({ title: 'Success', text: 'Producto eliminado correctamente', icon: 'success' });
+      },
+      error: (err) => {
+        Swal.fire({ title: 'Error', text: err.message, icon: 'error' });
+      }
+    })
+    /*if (this.selectedProduct && this.selectedProductIndex !== null) {
       const productId = this.selectedProduct.id;
       this.apiService.deleteProduct(productId).subscribe({
         next: () => {
@@ -340,7 +349,7 @@ export class FincauserComponent implements OnInit, OnChanges {
           Swal.fire({ title: 'Error', text: err.message, icon: 'error' });
         }
       });
-    }
+    }*/
   }
 
   adjustCardHeights(): void {

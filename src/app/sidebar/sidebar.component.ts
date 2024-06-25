@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,6 +10,10 @@ export class SidebarComponent {
   isCollapsed = false;
   Deletevisible: boolean = false;
   visible: boolean = false;
+
+  constructor(private router: Router){
+
+  }
 
 
   toggleSidebar() {
@@ -21,5 +26,10 @@ export class SidebarComponent {
 
   showDialog() {
     this.visible = true;
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['inicio'])
   }
 }

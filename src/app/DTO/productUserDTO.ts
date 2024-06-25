@@ -32,3 +32,20 @@ export interface RequestProduct{
     price:       string;
     category:    Category;
 }
+
+export const EMPTY_PRODUCT: ProductUser = {
+    id: 0,
+    image: '', // o una imagen predeterminada
+    title: '',
+    description: '',
+    colors: '',
+    price: '',
+    category: {
+        id: 0,
+        name: '',
+        division: {
+            id: 0,
+            name: ''
+        }
+    }
+}

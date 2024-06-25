@@ -60,7 +60,7 @@ export class ApiService {
     return this.http.post<Product>(`${this.apiUrl}/product`, product, {headers});
   }
 
-  updateProduct(id: number, product: FormData): Observable<Product> {
+  updateProduct(id: number, product: FormData | Product): Observable<Product> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders()
       .set('Authorization', `Bearer ${token}`);
@@ -142,5 +142,15 @@ export class ApiService {
     const headers = new HttpHeaders()
       .set('Authorization', `Bearer ${token}`);
     return this.http.get<CategoryPlain[]>(url, {headers})
+  }
+
+  getCategoryProductByDivision(id: number): Observable<ProductUser[]>{
+    const url = `${this.apiUrl}/product/division/${id}`;
+    return this.http.get<ProductUser[]>(url)
+  }
+
+  getCategoryByDivision(id: number) : Observable<CategoryPlain[]> {
+    const url = `${this.apiUrl}/category/division/${id}`;
+    return this.http.get<CategoryPlain[]>(url);
   }
 }

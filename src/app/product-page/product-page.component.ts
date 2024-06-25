@@ -65,30 +65,33 @@ export class ProductPageComponent implements OnInit {
           next: (response: ProductResponse) => {
             this.dataDetail = response;
             this.dataDetail.image = `http://localhost:3000/product/${this.dataDetail.id}/image`
+            console.log(this.dataDetail.category)
+
+            if(this.dataDetail){
+              console.log(this.dataDetail)
+              this.apiService.getProductsByCategory(this.dataDetail.category.id).subscribe({
+                next: (response: ProductResponse[]) => {
+                  this.dataInterest = response.map(product => {
+                    return {
+                      ...product,
+                      image: `http://localhost:3000/product/${product.id}/image`
+                    }
+                  })
+                  const index = this.dataInterest.findIndex(prod => prod.id === this.dataDetail!.id)
+                  this.dataInterest.splice(index, 1)
+                  console.log(this.dataInterest)
+                },
+                error: (error) => {
+                  console.log('Products Not Found')
+                }
+              });
+            }
+
           },
           error: (error) => {
             console.log('Product Not Found')
           }
         })
-
-        console.log(this.dataDetail)
-
-        this.apiService.getProductsByCategory(this.dataDetail!.category.id).subscribe({
-          next: (response: ProductResponse[]) => {
-            this.dataInterest = response.map(product => {
-              return {
-                ...product,
-                image: `http://localhost:3000/product/${product.id}/image`
-              }
-            })
-            const index = this.dataInterest.findIndex(prod => prod.id === this.dataDetail!.id)
-            this.dataInterest.splice(index, 1)
-            console.log(this.dataInterest)
-          },
-          error: (error) => {
-            console.log('Products Not Found')
-          }
-        });
       }
     });
   }
@@ -100,8 +103,9 @@ export class ProductPageComponent implements OnInit {
   }
 
   openWhatsapp() {
-    const phoneNumber = '573001234567';
-    const message = 'Hola, estoy interesado en el producto (nombre del producto)';
+    const phoneNumber = '573008822202';
+    const imageUrl = this.dataDetail?.image;
+    const message = `Hola, estoy interesad@ en el producto '${this.dataDetail?.title}'`;
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
   }
