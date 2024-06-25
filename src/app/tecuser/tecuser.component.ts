@@ -350,22 +350,6 @@ export class TecuserComponent implements OnInit, OnChanges{
         })
       }
     });
-
-    /*if (this.selectedProduct && this.selectedProductIndex !== null) {
-      const productId = this.selectedProduct.id;
-      this.apiService.deleteProduct(productId).subscribe({
-        next: () => {
-          this.productsUser?.splice(this.selectedProductIndex!, 1); // Ensure non-null assertion here
-          this.selectedProduct = null;
-          this.selectedProductIndex = null;
-          this.Deletevisible = false;
-          Swal.fire({ title: 'Eliminado', text: 'Producto eliminado correctamente', icon: 'success' });
-        },
-        error: (err) => {
-          Swal.fire({ title: 'Error', text: err.message, icon: 'error' });
-        }
-      });
-    }*/
   }
 
   adjustCardHeights(): void {
