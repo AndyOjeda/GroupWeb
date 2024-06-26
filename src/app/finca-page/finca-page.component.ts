@@ -40,6 +40,7 @@ export class FincaPageComponent implements OnInit {
             console.log('Products Not Found')
         }
       });
+      this.loadCategories();
     }
 
     navigateToProductInfo(product: ProductResponse){
@@ -52,6 +53,7 @@ export class FincaPageComponent implements OnInit {
     this.apiService.getCategoryByDivision(2).subscribe({
       next: (res) => {
         this.categoryUser = res;
+        console.log(this.categoryUser)
       },
       error: (err) => {
         Swal.fire({title: 'Error', text: err.message, icon:'error'})

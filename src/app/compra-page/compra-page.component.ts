@@ -39,6 +39,7 @@ export class CompraPageComponent implements OnInit {
           console.log('Products Not Found')
       }
     });
+    this.loadCategories();
   }
 
   navigateToProductInfo(product: ProductResponse){
