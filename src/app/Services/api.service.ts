@@ -84,7 +84,11 @@ export class ApiService {
   }
 
   createCategory(category: Category): Observable<Category> {
-    return this.http.post<Category>(`${this.apiUrl}/category`, category);
+    const token = localStorage.getItem('token');
+    const url = `${this.apiUrl}/category`;
+    const headers = new HttpHeaders()
+      .set('Authorization', `Bearer ${token}`);
+    return this.http.post<Category>(url, category, {headers});
   }
 
   updateCategory(id: number, category: Category): Observable<Category> {
