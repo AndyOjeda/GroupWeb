@@ -79,6 +79,10 @@ export class TecuserComponent implements OnInit, OnChanges{
       category: new FormControl('', [Validators.required]),
       image: new FormControl(null)
     });
+    this.categoryForm = this.fb.group({
+      name: new FormControl('', [Validators.required]),
+      division: new FormControl('', [Validators.required]),
+    });
     this.loadProducts();
   }
   ngOnChanges(changes: SimpleChanges): void {
@@ -363,18 +367,26 @@ export class TecuserComponent implements OnInit, OnChanges{
   }
 
   onCategorySubmit() {
-    if (this.categoryForm.valid) {
-      const newCategory = this.categoryForm.value;
-
+    if (this.categoryForm.valid) { 
+      const divisionId = (this.divisions.indexOf(this.categoryForm.get('division')?.value)) + 1
+      const newCategory : Category = {
+        name: this.categoryForm.get('name')?.value,
+        divisionId: divisionId,
+        userId: +localStorage.getItem('userId')!
+      }
+      
+      //POST
       this.apiService.createCategory(newCategory).subscribe({
         next: () => {
-          this.categoryDialogVisible = false;
           Swal.fire({
             title: 'Success',
             text: 'Se ha creado la categoría',
             icon: 'success'
           });
-          this.fetchCategory();
+          this.categoryDialogVisible = false;
+          setTimeout(function() {
+            location.reload();
+          }, 2000);
         },
         error: (err) => {
           Swal.fire({
@@ -383,7 +395,8 @@ export class TecuserComponent implements OnInit, OnChanges{
             icon: 'error'
           });
         }
-      });
+      })
+
     }
   }
 

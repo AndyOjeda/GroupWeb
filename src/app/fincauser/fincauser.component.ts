@@ -1,7 +1,6 @@
 import { Component, OnChanges, OnInit, SimpleChanges, computed } from '@angular/core';
 import { NavuserComponent } from "../navuser/navuser.component";
 import { SidebarModule } from "../sidebar/sidebar.module";
-import { RouterOutlet } from '@angular/router';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
@@ -17,8 +16,7 @@ import { CategoryPlain, EMPTY_PRODUCT, ProductUser, RequestProduct } from '../DT
 import { ApiService } from '../Services/api.service';
 import { AuthService } from '../auth/auth.service';
 import Swal from 'sweetalert2';
-import { title } from 'process';
-import { Product } from '../models/model';
+import { Category, Product } from '../models/model';
 
 
 @Component({
@@ -75,7 +73,11 @@ export class FincauserComponent implements OnInit, OnChanges {
       color: new FormControl('', [Validators.required]),
       category: new FormControl('', [Validators.required]),
       image: new FormControl(null)
-    })
+    });
+    this.categoryForm = this.fb.group({
+      name: new FormControl('', [Validators.required]),
+      division: new FormControl('', [Validators.required]),
+    });
   }
   ngOnChanges(changes: SimpleChanges): void {
 
@@ -379,6 +381,36 @@ export class FincauserComponent implements OnInit, OnChanges {
 
   onCategorySubmit() {
     if (this.categoryForm.valid) {
+      const divisionId = (this.divisions.indexOf(this.categoryForm.get('division')?.value)) + 1
+      const newCategory : Category = {
+        name: this.categoryForm.get('name')?.value,
+        divisionId: divisionId,
+        userId: +localStorage.getItem('userId')!
+      }
+      
+      //POST
+      this.apiService.createCategory(newCategory).subscribe({
+        next: () => {
+          Swal.fire({
+            title: 'Success',
+            text: 'Se ha creado la categoría',
+            icon: 'success'
+          });
+          this.categoryDialogVisible = false;
+          setTimeout(function() {
+            location.reload();
+          }, 2000);
+        },
+        error: (err) => {
+          Swal.fire({
+            title: 'Error',
+            text: err.message,
+            icon: 'error'
+          });
+        }
+      });
+    }
+    /*if (this.categoryForm.valid) {
       const newCategory = this.categoryForm.value;
 
       this.apiService.createCategory(newCategory).subscribe({
@@ -399,7 +431,7 @@ export class FincauserComponent implements OnInit, OnChanges {
           });
         }
       });
-    }
+    }*/
   }
 
 
