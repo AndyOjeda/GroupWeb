@@ -1,0 +1,250 @@
+/* Asegúrate de que el sidebar y el popup estén siempre visibles */
+app-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+  }
+  
+  app-formpopup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+  }
+  
+  /* Estilos de los títulos de las tarjetas */
+  .card-title {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-style: normal;
+    color: #19191a;
+  }
+  
+  /* Estilos de los botones de acción */
+  .action-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.4rem;
+    border: 1px solid white;
+    border-radius: 15px;
+    cursor: pointer;
+    width: auto; /* Ajusta el ancho automáticamente */
+    margin: 5px; /* Añade margen */
+  }
+  
+  .action-button svg {
+    margin-right: 4px;
+  }
+  
+  .action-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .action-button:active {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+  
+  /* Estilos de los botones específicos */
+  .add-button {
+    background-color: #04AA6D;
+    color: white;
+    border: 2px solid #04AA6D;
+    border-radius: 12px;
+    padding: 0.6rem;
+    height: 3rem;
+    width: auto;
+    justify-content: center;
+    margin: 1rem;
+  }
+  
+  .add-button-category {
+    background-color: #04AA6D;
+    color: white;
+    border: 2px solid #04AA6D;
+    border-radius: 12px;
+    padding: 0.6rem;
+    height: 3rem;
+    width: auto;
+    justify-content: center;
+    margin: 1rem;
+    margin-left: 22rem;
+  }
+  
+  
+  .danger-button {
+    background-color: #ff0000;
+    color: rgb(31, 24, 24);
+    border: 2px solid #ff0000;
+    border-radius: 12px;
+    padding: 0.6rem;
+    height: 3rem;
+    width: auto;
+    justify-content: center;
+    margin: 1rem;
+  }
+  
+  .danger-button:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid #ff0000;
+  }
+  
+  .add-button:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid #04AA6D;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  ::ng-deep .p-ripple {
+    background-color: transparent;
+    border: 0px;
+    margin-top: 1rem;
+  }
+  
+  ::ng-deep .p-icon {
+    height: 1.5rem;
+    width: 1.5rem;
+    color: #ffffff;
+  }
+  
+  ::ng-deep .p-dialog-header {
+    background-color: transparent;
+    border-radius: 12px;
+    height: 2rem;
+  }
+  
+  .container {
+    display: flex;
+  }
+  
+  .head-text {
+    display: flex;
+    align-items: center;
+    margin-left: 5rem; /* Ajusta según el ancho del sidebar */
+    width: calc(100% - 250px);
+    justify-content: space-between; /* Añade espacio entre el título y el botón */
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .product-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 10rem; /* Ajusta según el ancho del sidebar */
+    border: none;
+  }
+  
+  .product-card {
+    display: flex;
+    align-items: center;
+    width: 24rem; /* Ajusta el ancho de las tarjetas */
+    margin: 25px; /* Espacio entre las tarjetas */
+    border-radius: 5px;
+    background-color: #fff;
+    min-height: 200px; /* Añade una altura mínima para todas las tarjetas */
+  }
+  
+  .product-card img {
+    padding: 1.2rem;
+    width: 25rem; /* Tamaño fijo para todas las imágenes */
+    height: 20rem; /* Tamaño fijo para todas las imágenes */
+    object-fit: cover; /* Asegura que la imagen cubra el área */
+    margin-right: 20px; /* Espacio entre la imagen y el contenido */
+    border-radius: 15px;
+  }
+  
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Flex para el contenido de la tarjeta */
+  }
+  
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .card-body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .card-title {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #19191a;
+  }
+  
+  .card-price {
+    font-size: 1rem;
+    color: #19191a;
+    margin-bottom: 10px;
+  }
+  
+  .card-actions {
+    display: flex;
+    justify-content: flex-end; /* Alinea los botones a la derecha */
+  }
+  
+  .action-button {
+    margin: 5px;
+    padding: 0.5rem 1rem;
+  }
+  
+  .action-button.edit {
+    background-color: #04AA6D; /* Fondo verde para el botón de editar */
+    color: white;
+  }
+  
+  .action-button.delete {
+    background-color: #e74c3c; /* Fondo rojo para el botón de eliminar */
+    color: white;
+  }
+  
+  .custom-card {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .titulo {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .flex-auto {
+    flex: 1;
+  }
+  
+  .long-input {
+    width: 100%;
+  }
+  
+  .upload-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .empty-template {
+    text-align: center;
+  }
+  
+  .upload-icon {
+    font-size: 50px;
+    color: #ccc;
+  }
+  

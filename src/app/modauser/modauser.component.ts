@@ -1,55 +1,45 @@
-import { Component, OnChanges, OnInit, SimpleChanges, computed } from '@angular/core';
-import { NavuserComponent } from "../navuser/navuser.component";
-import { SidebarModule } from "../sidebar/sidebar.module";
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { CategoryPlain, EMPTY_PRODUCT, ProductUser } from '../DTO/productUserDTO';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AuthService } from '../auth/auth.service';
+import { ApiService } from '../Services/api.service';
+import { MessageService, PrimeNGConfig } from 'primeng/api';
+import { NavuserComponent } from '../navuser/navuser.component';
+import { SidebarModule } from '../sidebar/sidebar.module';
 import { RouterOutlet } from '@angular/router';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
-import { FormBuilder, FormControl, FormGroup, FormsModule, Validators, ReactiveFormsModule } from '@angular/forms';
-import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { FileUploadModule } from 'primeng/fileupload';
-import { CommonModule } from '@angular/common';
 import { BadgeModule } from 'primeng/badge';
-import { HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { ToastModule } from 'primeng/toast';
-import { CategoryPlain, EMPTY_PRODUCT, ProductUser, RequestProduct } from '../DTO/productUserDTO';
-import { ApiService } from '../Services/api.service';
-import { AuthService } from '../auth/auth.service';
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 import Swal from 'sweetalert2';
-import { title } from 'process';
 import { Category, Product } from '../models/model';
 
 @Component({
-    selector: 'app-comprauser',
-    standalone: true,
-    templateUrl: './comprauser.component.html',
-    styleUrls: ['./comprauser.component.css'],
-    imports: [
-        NavuserComponent,
-        SidebarModule,
-        HttpClientModule,
-        DialogModule,
-        ButtonModule,
-        InputTextModule,
-        FormsModule,
-        FileUploadModule,
-        BadgeModule,
-        ProgressBarModule,
-        ToastModule,
-        CommonModule,
-        ReactiveFormsModule
-    ],
-    providers: [MessageService]
+  selector: 'app-modauser',
+  standalone: true,
+  imports: [
+    NavuserComponent, SidebarModule, RouterOutlet, DialogModule, ButtonModule,
+    InputTextModule, FormsModule, FileUploadModule, BadgeModule, ProgressBarModule,
+    ToastModule, HttpClientModule, CommonModule, ReactiveFormsModule
+  ],
+  providers: [MessageService],
+  templateUrl: './modauser.component.html',
+  styleUrl: './modauser.component.css'
 })
-export class ComprauserComponent {
+export class ModauserComponent implements OnInit, OnChanges{
+  
   visible: boolean = false;
   Editvisible: boolean = false;
   Deletevisible: boolean = false;
+  categoryDialogVisible: boolean = false;
   index: number = 0;
   selectedProduct: ProductUser = EMPTY_PRODUCT;
   selectedProductIndex: number | null = null;
-  categoryDialogVisible: boolean = false;
 
   files: any[] = [];
   totalSize: number = 0;
@@ -92,11 +82,13 @@ export class ComprauserComponent {
       name: new FormControl('', [Validators.required]),
       division: new FormControl('', [Validators.required]),
     });
+    this.loadProducts();
   }
+
   ngOnChanges(changes: SimpleChanges): void {
 
   }
-
+  
   ngOnInit(): void {
     this.loadProducts();
   }
@@ -104,7 +96,7 @@ export class ComprauserComponent {
   loadProducts(): void {
     const id = localStorage.getItem('userId');
     if (id) {
-      this.apiService.getProductByUserId(+id, 3).subscribe({
+      this.apiService.getProductByUserId(+id, 4).subscribe({
         next: (value) => {
           this.productsUser = value.map(product => {
             const imageUrl = product.image ? `http://localhost:3000/product/${product.id}/image` : 'No Image';
@@ -146,7 +138,7 @@ export class ComprauserComponent {
   fetchCategory(){
     const id = localStorage.getItem('userId');
     if(id){
-      this.apiService.getCategoryByUserIdAndDivision(+id, 3).subscribe({
+      this.apiService.getCategoryByUserIdAndDivision(+id, 4).subscribe({
         next: (res) => {
           this.categoryUser = res;
         },
@@ -175,13 +167,15 @@ export class ComprauserComponent {
     this.Editvisible = true;
   }
 
-  showDeleteDialog(product: ProductUser, index: number) {
+  showDeleteDialog(product: ProductUser) {
     this.selectedProduct = product;
-    this.selectedProductIndex = index;
+    console.log(product)
+    //this.selectedProduct = product;
+    //this.selectedProductIndex = index;
     this.Deletevisible = true;
   }
 
-   choose(event: any, callback: () => void) {
+  choose(event: any, callback: () => void) {
     callback();
   }
 
@@ -257,7 +251,7 @@ export class ComprauserComponent {
         image: image,
         title: this.productForm.get('title')?.value,
         description: this.productForm.get('description')?.value,
-        colors: this.productForm.get('color')?.value,
+        colors: this.productForm.get('colors')?.value,
         price: this.productForm.get('price')?.value,
         categoryId: this.productForm.get('category')?.value,
       }
@@ -305,8 +299,9 @@ export class ComprauserComponent {
           image = product.image;
         }
 
+        console.log(this.productForm.value);
+
         let formData : FormData = new FormData();
-        formData.append('id', this.productForm.get('id')?.value);
         formData.append('image', image);
         formData.append('title', this.productForm.get('title')?.value);
         formData.append('description', this.productForm.get('description')?.value);
@@ -315,7 +310,7 @@ export class ComprauserComponent {
         formData.append('categoryId', this.productForm.get('category')?.value);
 
         const req : Product = {
-          id: product.id,
+          //id: product.id,
           image: image,
           title: this.productForm.get('title')?.value,
           description: this.productForm.get('description')?.value,
@@ -323,6 +318,7 @@ export class ComprauserComponent {
           price: this.productForm.get('price')?.value,
           categoryId: this.productForm.get('category')?.value,
         }
+        console.log(req)
         this.apiService.updateProduct(product.id, formData).subscribe({
           next: () => {
             this.Editvisible = false;
@@ -351,45 +347,22 @@ export class ComprauserComponent {
   }
 
   deleteProduct() {
+    console.log(this.selectedProduct);
     this.apiService.deleteProduct(this.selectedProduct.id).subscribe({
       next: () => {
-        Swal.fire({ title: 'Success', text: 'Producto eliminado correctamente', icon: 'success' });
+        Swal.fire({
+          title: 'Success',
+          text: 'Se ha eliminado el producto',
+          icon: 'success'
+        })
       },
       error: (err) => {
-        Swal.fire({ title: 'Error', text: err.message, icon: 'error' });
+        Swal.fire({
+          title: 'Error',
+          text: err.message,
+          icon: 'error'
+        })
       }
-    })
-
-    /*if (this.selectedProduct && this.selectedProductIndex !== null) {
-      const productId = this.selectedProduct.id;
-      this.apiService.deleteProduct(productId).subscribe({
-        next: () => {
-          this.productsUser?.splice(this.selectedProductIndex!, 1); // Ensure non-null assertion here
-          this.selectedProduct = null;
-          this.selectedProductIndex = null;
-          this.Deletevisible = false;
-          Swal.fire({ title: 'Success', text: 'Producto eliminado correctamente', icon: 'success' });
-        },
-        error: (err) => {
-          Swal.fire({ title: 'Error', text: err.message, icon: 'error' });
-        }
-      });
-    }*/
-  }
-
-  adjustCardHeights(): void {
-    const cards = document.querySelectorAll('.product-card');
-    let maxHeight = 0;
-
-    cards.forEach(card => {
-      const cardHeight = card.clientHeight;
-      if (cardHeight > maxHeight) {
-        maxHeight = cardHeight;
-      }
-    });
-
-    cards.forEach(card => {
-      (card as HTMLElement).style.height = `${maxHeight}px`;
     });
   }
 
@@ -422,9 +395,9 @@ export class ComprauserComponent {
             icon: 'error'
           });
         }
-      });
+      })
+
     }
   }
-
 
 }

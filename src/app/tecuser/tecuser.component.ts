@@ -55,7 +55,7 @@ export class TecuserComponent implements OnInit, OnChanges{
   categoryForm!: FormGroup;
   selectedFile: File | null = null;
 
-  divisions: string[] = ['Tecnologia', 'Finca Raiz', 'Compra - Venta'];
+  divisions: string[] = ['Tecnologia', 'Finca Raiz', 'Compra-Venta', 'Moda'];
   currentUser: string = localStorage.getItem('userId') || '';
 
   items = [

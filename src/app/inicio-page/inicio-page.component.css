@@ -121,6 +121,12 @@
     height: 35rem;
 }
 
+.card-4{
+  background-color: #bdbda8;
+  /*background-color: #bdbda8;*/
+  height: 35rem;
+}
+
 .card-body{
 
     display: flex;
@@ -422,9 +428,11 @@ margin-top: 1rem;
 .car-picture{
 width: 100%;
 max-width: 30rem;
-height: auto;
+height: 300px;
 margin-top: 3rem;
+object-fit: contain;
 }
+
 
 .devices-picture{
 width: 100%;
