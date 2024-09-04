@@ -2,7 +2,6 @@
 @import url("//fonts.googleapis.com/css?family=Roboto:700&text=css");
 @import url("//fonts.googleapis.com/css?family=Kaushan+Script&text=!");
 
-
 .text {
   text-transform: uppercase;
   font-family: verdana;
@@ -10,20 +9,12 @@
   font-weight: 700;
   margin-right: 3rem;
   color: #f5f5f5;
-  text-shadow: 1px 1px 1px #919191,
-      1px 2px 1px #919191,
-      1px 3px 1px #919191,
-      1px 4px 1px #919191,
-      1px 5px 1px #919191,
-      1px 6px 1px #919191,
-      1px 7px 1px #919191,
-      1px 8px 1px #919191,
-      1px 9px 1px #919191,
-      1px 10px 1px #919191,
-  1px 18px 6px rgba(16,16,16,0.4),
-  1px 22px 10px rgba(16,16,16,0.2),
-  1px 25px 35px rgba(16,16,16,0.2),
-  1px 30px 60px rgba(16,16,16,0.4);
+  text-shadow: 1px 1px 1px #919191, 1px 2px 1px #919191, 1px 3px 1px #919191,
+    1px 4px 1px #919191, 1px 5px 1px #919191, 1px 6px 1px #919191,
+    1px 7px 1px #919191, 1px 8px 1px #919191, 1px 9px 1px #919191,
+    1px 10px 1px #919191, 1px 18px 6px rgba(16, 16, 16, 0.4),
+    1px 22px 10px rgba(16, 16, 16, 0.2), 1px 25px 35px rgba(16, 16, 16, 0.2),
+    1px 30px 60px rgba(16, 16, 16, 0.4);
 }
 
 .stage {
@@ -50,7 +41,8 @@
 }
 
 .layer:after {
-  font: 150px/0.65 "Pacifico", "Kaushan Script", Futura, "Roboto", "Trebuchet MS", Helvetica, sans-serif;
+  font: 150px/0.65 "Pacifico", "Kaushan Script", Futura, "Roboto",
+    "Trebuchet MS", Helvetica, sans-serif;
   content: "Tecnologia";
   white-space: pre;
   text-align: center;
@@ -143,16 +135,16 @@
   transform: translateZ(-28.5px);
 }
 
-.layer:nth-child(n+10):after {
+.layer:nth-child(n + 10):after {
   -webkit-text-stroke: 3px rgba(0, 0, 0, 0.25);
 }
 
-.layer:nth-child(n+11):after {
+.layer:nth-child(n + 11):after {
   -webkit-text-stroke: 15px dodgerblue;
   text-shadow: 6px 0 6px #00366b, 5px 5px 5px #002951, 0 6px 6px #00366b;
 }
 
-.layer:nth-child(n+12):after {
+.layer:nth-child(n + 12):after {
   -webkit-text-stroke: 15px #0077ea;
 }
 
@@ -171,185 +163,199 @@
   }
 }
 
-
-
-.primary-text{
-    font-family: "Oswald", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 700;
-    font-style: normal;
+.primary-text {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
 }
 
-.secondary-text{
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+.secondary-text {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
-.third-text{
-    font-family: "DM Sans", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 300;
-    font-style: normal;
+.third-text {
+  font-family: "DM Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
 }
-.color-white{
-    color: #f0f0f0;
+.color-white {
+  color: #f0f0f0;
 }
-.color-silver{
-    color: #c7c4c1;
+.color-silver {
+  color: #c7c4c1;
 }
-.color-raisin{
-    color: #373442;
+.color-raisin {
+  color: #373442;
 }
-.color-khaki{
-    color: #a69a8e;
+.color-khaki {
+  color: #a69a8e;
 }
-.color-gray{
-    color: #888987;
+.color-gray {
+  color: #888987;
 }
-.color-black{
-    color: #19191a;
+.color-black {
+  color: #19191a;
 }
-.img{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 28rem;
-    height: 30rem;
-
-
+.img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 28rem;
+  height: 30rem;
 }
 
-.banner{
-    width: 100%;
-    height: 30rem;
-    border-radius: 0px;
+.banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
 }
 
-.banner-1{
-    background-color: #BFBFBF ;
+.banner-1 {
+  background-color: #bfbfbf;
 }
 
-.banner-2{
-    background-color: #425052 ;
+.banner-2 {
+  background-color: #425052;
 }
 
-.banner-3{
-    background-color: #B1CBCF ;
+.banner-3 {
+  background-color: #b1cbcf;
 }
 
-
-.btn{
-    background-color: white; /* Color de fondo del botón */
-    border: none;
-    color: #c7c4c1;
-    border-radius: 20px;
-    padding: 5px 15px;
+.btn {
+  background-color: white; /* Color de fondo del botón */
+  border: none;
+  color: #c7c4c1;
+  border-radius: 20px;
+  padding: 5px 15px;
 }
 
-.btn:hover{
-    background-color: transparent;
+.btn:hover {
+  background-color: transparent;
   color: white;
   border: none;
 }
 
 .banner-title {
-    text-align: left;
-    display: flex;
-    font-size: 8rem;
-    padding-right: 4rem;
+  text-align: left;
+  display: flex;
+  font-size: 8rem;
+  padding-right: 4rem;
 }
 
-.banner-elements{
-    display: flex;
-    flex-direction:row;
-    align-items: center;
-
+.banner-elements {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
-.store{
-    margin: 2rem;
-
+.store {
+  margin: 2rem;
 }
 
-  .card{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 17rem;
-      height: 27rem;
-      padding: 1.8rem;
-      padding-top: 3cap;
-      border: 3px solid #c2c2c1;
-      border-radius: 2rem;
-      box-shadow: 0px 30px 40px rgba(0, 0, 0, 0.1), /* Aumenta el desplazamiento, desenfoque y opacidad */
-                -4px -4px 30px rgba(0, 0, 0, 0.05);
-      overflow: hidden;
-      transition: all 0.3s;
-  }
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 17rem;
+  height: 27rem;
+  padding: 1.8rem;
+  padding-top: 3cap;
+  border: 3px solid #c2c2c1;
+  border-radius: 2rem;
+  box-shadow: 0px 30px 40px rgba(0, 0, 0, 0.1),
+    /* Aumenta el desplazamiento, desenfoque y opacidad */ -4px -4px 30px
+      rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: all 0.3s;
+}
 
-  .card:hover{
-    transform: translateY(-10px);
-    box-shadow: 0px 40px 50px rgba(0, 0, 0, 0.2), /* Aumenta más para el hover */
-                -4px -4px 35px rgba(0, 0, 0, 0.15); /* Sombra azul más pronunciada */
-  }
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 40px 50px rgba(0, 0, 0, 0.2),
+    /* Aumenta más para el hover */ -4px -4px 35px rgba(0, 0, 0, 0.15); /* Sombra azul más pronunciada */
+}
 
-  .card-title{
-      font-family: "Poppins", sans-serif;
-      font-size: 1.1rem;
-      font-weight: bold;
-      font-style: normal;
-      color: #19191a;
-      text-align: center;
-  }
+.card-title {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1rem;
+  font-weight: bold;
+  font-style: normal;
+  color: #19191a;
+  text-align: center;
+}
 
-  .card-info{
-      font-family: "Poppins", sans-serif;
-      font-size: 0.9rem;
-      font-weight:normal;
-      font-style: normal;
-      color: #888987;
-      text-align: center;
-  }
+.card-info {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+  font-weight: normal;
+  font-style: normal;
+  color: #888987;
+  text-align: center;
+}
 
-  .card-button{
-    background-color: #04AA6D;
-    color: white;
-    border: 2px solid #04AA6D;
-    border-radius: 12px;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center; /* Añade esta línea para centrar verticalmente */
-    padding: 0.6rem;
-    width: 100%;
-    height: 3rem;
-  }
+.card-button {
+  background-color: #04aa6d;
+  color: white;
+  border: 2px solid #04aa6d;
+  border-radius: 12px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Añade esta línea para centrar verticalmente */
+  padding: 0.6rem;
+  width: 100%;
+  height: 3rem;
+}
 
-  .card-button:hover{
-    background-color: white;
-    color: black;
-    border: 2px solid #04AA6D;
-  }
+.card-button:hover {
+  background-color: white;
+  color: black;
+  border: 2px solid #04aa6d;
+}
 
-
-
-.album{
+.album {
   background-color: #ffffff;
 }
 
-.background{
+.background {
   background-image: linear-gradient(to left, #888987, #bdbda8);
 }
 
-.dropdown{
+.dropdown {
   width: 20rem;
   height: 2rem;
   font-size: 1.5rem;
-  margin-left: 3rem;
+  margin: 0 0 3rem 3rem;
   border-radius: 15px;
-  padding-left: 1rem;
   box-shadow: 2px 2px 5px rgb(129, 129, 129);
   font-family: "Poppins", sans-serif;
   font-weight: 350;
+}
+.container-products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  justify-items: center;
+}
+@media screen and (max-width: 640px) {
+  .banner-title {
+    font-size: 4.8rem;
+    padding-right: 0;
+  }
+  .img {
+    width: 18rem;
+    height: 14rem;
+  }
+  .banner {
+    flex-direction: column;
+  }
+  .dropdown {
+    margin: 0 1.5rem 2.5rem 1.5rem;
+  }
 }

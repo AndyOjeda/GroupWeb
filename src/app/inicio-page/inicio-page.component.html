@@ -2,131 +2,127 @@
 
 <!-- CARDS INICIALES -->
 
-<div class="d-flex wrap justify-content-center">
+<article class="menu-home" id="menu-home">
 
-  <div class="card img card-1">
-    <img src="../../assets/img/devices (1).png" class="card-img-top img pictures devices-picture" alt="...">
-    <div class="card-body">
-      <h5 class="card-title primary-text color-white">Tecnología</h5>
-      <a href="/tecnologia" class="btn btn-primary color-black btn-text">Explora Aquí</a>
+  <section class="general-card">
+    <div class="menu-home-card">
+      <img src="../../assets/img/tech-home.png" class="menu-home-image" alt="...">
+      <h5 class="menu-home-title">Tecnología</h5>
+      <a href="/tecnologia" class="menu-home-button">Explora Aquí</a>
     </div>
-  </div>
-  <div class="card img card-2">
-    <img src="../../assets/img/House.png" class="card-img-top img pictures" alt="...">
-    <div class="card-body" style="margin-top: 5rem;">
-      <h5 class="card-title primary-text color-white">Finca Raíz</h5>
-      <a href="/finca" class="btn btn-primary color-black btn-text">Explora Aquí</a>
+    <hr class="separator-card responsive-movil" />
+  </section>
+
+  <section class="general-card">
+    <div class="menu-home-card">
+      <img src="../../assets/img/house-home.png" class="menu-home-image" alt="...">
+      <h5 class="menu-home-title">Finca raíz</h5>
+      <a href="/finca" class="menu-home-button">Explora Aquí</a>
     </div>
-  </div>
-  <div class="card img card-3">
-    <img src="../../assets/img/cars.png" class="card-img-top img pictures car-picture" alt="...">
-    <div class="card-body">
-      <h5 class="card-title primary-text color-white">Compra-Venta</h5>
-      <a href="/compra" class="btn btn-primary color-black btn-text">Explora Aquí</a>
+    <hr class="separator-card responsive" />
+  </section>
+
+  <section class="general-card">
+    <div class="menu-home-card">
+      <img src="../../assets/img/car-home.png" class="menu-home-image" alt="...">
+      <h5 class="menu-home-title">Compra - Venta</h5>
+      <a href="/compra" class="menu-home-button">Explora Aquí</a>
     </div>
-  </div>
-  <div class="card img card-4">
-    <img src="../../assets/img/t-shirt.webp" class="card-img-top img pictures car-picture" alt="...">
-    <div class="card-body">
-      <h5 class="card-title primary-text color-white">Moda</h5>
-      <a href="/moda" class="btn btn-primary color-black btn-text">Explora Aquí</a>
+    <hr class="separator-card responsive-movil" />
+  </section>
+
+  <section class="general-card">
+    <div class="menu-home-card">
+      <img src="../../assets/img/blouse-home.png" class="menu-home-image" alt="...">
+      <h5 class="menu-home-title">Moda</h5>
+      <a href="/moda" class="menu-home-button">Explora Aquí</a>
     </div>
-  </div>
-</div>
+  </section>
+</article>
 
 <!-- TITULO RECOMENDADOS -->
-<div class="d-flex justify-content-center" style="margin: 20px;">
-  <h2 class="primary-text" style="font-size: 5rem;">Recomendados</h2>
+<div class="d-flex justify-content-center" style="margin: 25px 20px;">
+  <h2 class="primary-text">Recomendados</h2>
 </div>
 
-<div class="d-flex wrap justify-content-between" style="margin-left: 2.5rem; margin-right: 2.5rem; gap: 20px;">
-
+<div class="container-recommendations">
   @for (product of data; track $index) {
-    <div class="cards">
-      <p-card [header]="product.title" [subheader]="product.price" [style]="{ width: '20rem'}">
-        <ng-template pTemplate="header">
-          <!-- TODO: TENER TAMAÑO ESPECÍFICO DE LA IMGAEN Y AGREGAR PROPIEDAD OBJECTFIT DE CSS -->
-          <img alt="card-img" [src]="product.image" style="width: 20rem; height: 17rem; margin-top: 3rem;" />
-        </ng-template>
-        <div class="d-flex wrap">
-        </div>
-        <button style="margin-top: 1rem; margin-bottom: 1rem;" type="button" class="card-button" (click)="navigateToProductInfo(product.id)">Más Info</button>
-      </p-card>
-    </div>
+  <div class="cards">
+    <p-card [header]="product.title" [subheader]="product.price" [style]="{ width: '20rem'}">
+      <ng-template pTemplate="header">
+        <!-- TODO: TENER TAMAÑO ESPECÍFICO DE LA IMGAEN Y AGREGAR PROPIEDAD OBJECTFIT DE CSS -->
+        <img alt="card-img" [src]="product.image" style="width: 20rem; height: 17rem; margin-top: 3rem;" />
+      </ng-template>
+      <div class="d-flex wrap">
+      </div>
+      <button style="margin-top: 1rem; margin-bottom: 1rem;" type="button" class="card-button"
+        (click)="navigateToProductInfo(product.id)">Más Info</button>
+    </p-card>
+  </div>
   }
 </div>
 
 <!-- COMUNICATE CON NOSOTROS -->
-
 <div style="background-color: #BFBFBF ; padding-bottom: 5rem ; margin-top: 5rem;">
   <div class="d-flex justify-content-center" style="margin-top: 5rem">
-    <h2 class="primary-text" style="font-size: 5rem; padding-top: 5rem; margin-bottom: 5rem;">Contáctate con nosotros!</h2>
+    <h2 class="primary-text" style="padding-top: 5rem; margin-bottom: 5rem; text-align: center;">Contáctate con
+      nosotros!
+    </h2>
   </div>
 
-  <div style="margin-left: 13rem;">
-    <div class="d-flex wrap">
+  <section class="container-contact">
+    <div class="pepe">
       <label class="label" for="Name">Nombre Completo:</label>
-      <label class="labelC" for="City">Ciudad:</label><br>
-    </div>
-    <div class="d-flex wrap">
       <input class="inputG" type="text" id="Name">
-      <input class="inputC" type="text" id="City">
     </div>
-    <div class="d-flex wrap">
+    <div class="pepe">
+      <label class="label" for="City">Ciudad:</label>
+      <input class="inputG" type="text" id="City">
+    </div>
+    <div class="pepe">
       <label class="label" for="Project">Empresa o proyecto:</label>
-      <label class="labelC" for="Phone">Télefono:</label><br>
-    </div>
-    <div class="d-flex wrap">
       <input class="inputG" type="text" id="Project">
-      <input class="inputC"  type="text" id="Phone">
     </div>
-    <div class="d-flex wrap">
+    <div class="pepe">
+      <label class="label" for="Phone">Télefono:</label>
+      <input class="inputG" type="text" id="Phone">
+    </div>
+    <div class="pepe">
       <label class="label" for="Email">Correo Electronico:</label>
-      <label class="labelC" for="Product">Producto de Interés:</label><br>
-    </div>
-    <div class="d-flex wrap">
       <input class="inputG" type="text" id="Email">
-      <input class="inputC" type="text" id="Product">
     </div>
-    <div class="container-button">
-      <button class="button-contact" (click)="abrirCorreo()" >ENVIA TUS DATOS </button>
+    <div class="pepe">
+      <label class="label" for="Product">Producto de Interés:</label>
+      <input class="inputG" type="text" id="Product">
     </div>
+  </section>
+  <div class="container-button">
+    <button class="button-contact" (click)="abrirCorreo()">ENVIA TUS DATOS </button>
   </div>
 </div>
 
 <!-- FOOTER -->
 
-<div class="footer-container" style="margin-top: 2rem">
-  <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5" style="margin-right: 0px;">
-    <div class="col mb-3">
-      <a href="/" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
-        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-      </a>
-      <p class="text-body-secondary third-text text-title">GROUP M&S</p>
-    </div>
+<footer class="footer-container">
+  <div class="col mb-3">
+    <a href="/" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
+      <svg class="bi me-2" width="40" height="32">
+        <use xlink:href="#bootstrap" />
+      </svg>
+    </a>
+    <p class="text-body-secondary third-text text-title">GROUP M&S</p>
+  </div>
 
-    <div class="col mb-3">
-      <!-- Espacio -->
-    </div>
+  <section class="section-footer">
+    <h5 class="third-text text-body">Bogota DC, Colombia</h5>
+    <h4 class="third-text text-body">Correos Electronicos:</h4>
+    <p class="third-text text-body link-body-emphasis"><a href="mailto:groupms&#64;gmail.com">groupms&#64;gmail.com</a>
+    </p>
+  </section>
 
-    <div class="col mb-3">
-      <h5 class="third-text text-body">Bogota DC, Colombia</h5>
-      <ul class="nav flex-column">
-        <h4 class="third-text text-body">Correos Electronicos:</h4>
-        <p class="third-text text-body link-body-emphasis"><a href="mailto:groupms&#64;gmail.com">groupms&#64;gmail.com</a></p>
-      </ul>
-    </div>
-
-    <div class="col mb-3">
-      <!-- Espacio -->
-    </div>
-
-    <div class="col mb-2">
-      <h5 class="third-text text-body">Teléfonos de Contacto</h5>
-      <ul class="nav flex-column">
-        <p class="third-text text-body"><a href="tel:+573123456789">+57 3123456789</a></p>
-        <p class="third-text text-body"><a href="tel:+573123456789">+57 3123456789</a></p>
-      </ul>
-    </div>
-  </footer>
-</div>
+  <section class="section-footer">
+    <h5 class="third-text text-body">Teléfonos de Contacto</h5>
+    <p class="third-text text-body"><a href="tel:+573123456789">+57 3123456789</a></p>
+    <p class="third-text text-body"><a href="tel:+573123456789">+57 3123456789</a></p>
+  </section>
+</footer>
