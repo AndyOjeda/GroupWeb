@@ -2,44 +2,44 @@
 
 <!-- BANNER TECNOLOGIA -->
 <div class="background">
-  <div class="banner img banner-1 banner-elements background">
-      <h5 class="banner-title primary-text color-white">Moda</h5>
-      <img src="../../assets/img/t-shirt.webp" alt="Imagen moda" class="banner-img-top img">
+  <div class="banner banner-1 background">
+    <h5 class="banner-title primary-text color-white">Moda</h5>
+    <img src="../../assets/img/t-shirt.webp" alt="Imagen moda" class="banner-img-top img">
   </div>
 </div>
 <br><br>
 
 <div class="album">
   <select id="category" class="dropdown" (change)="loadProductsByCategory($event)">
-      @for (category of categoryUser; track $index) {
-          <option [value]="category.id">{{category.name}}</option>
-      }
+    @for (category of categoryUser; track $index) {
+    <option [value]="category.id">{{category.name}}</option>
+    }
   </select>
-  <div class="container my-5 justify-content-center">
-    <div>
-      @for (product of data; track $index) {
-        <div class="col">
-          <div class="card">
-            <img [src]="product.image" class="card-img-top" alt="{{product.title}}" style="padding: 10px;">
-            <div class="card-body">
-              <p class="card-text card-title">{{product.title}} <br> ({{ product.colors }})</p>
-              <p class="card-text card-info">{{product.price}}</p>
-              <div class="d-flex justify-content-center align-items-center">
-                <button type="button" class="card-button" (click)="navigateProductInfo(product)">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                    class="bi bi-info-circle" viewBox="0 0 16 16">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
-                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                      <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
-                    </svg>
-                  </svg> &nbsp; Más Info
-                </button>
-              </div>
-            </div>
+  <div class="container-products">
+    @for (product of data; track $index) {
+    <div class="col">
+      <div class="card">
+        <img [src]="product.image" class="card-img-top" alt="{{product.title}}" style="padding: 10px;">
+        <div class="card-body">
+          <p class="card-text card-title">{{product.title}} <br> ({{ product.colors }})</p>
+          <p class="card-text card-info">{{product.price}}</p>
+          <div class="d-flex justify-content-center align-items-center">
+            <button type="button" class="card-button" (click)="navigateProductInfo(product)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                class="bi bi-info-circle" viewBox="0 0 16 16">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor"
+                  class="bi bi-info-circle" viewBox="0 0 16 16">
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                  <path
+                    d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+                </svg>
+              </svg> &nbsp; Más Info
+            </button>
           </div>
         </div>
-      }
+      </div>
     </div>
+    }
   </div>
 </div>
 
