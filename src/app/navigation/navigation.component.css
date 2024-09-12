@@ -76,13 +76,15 @@
 }
 
 .primary-text {
-  font-family: "Oswald", sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   white-space: nowrap;
   font-weight: 700;
+  font-size: 210%;
   font-style: normal;
   display: inline;
   vertical-align: middle;
   margin-top: 0.5rem;
+  margin-left: -0.5rem;
 }
 
 .secondary-text {
