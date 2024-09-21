@@ -13,6 +13,7 @@ import { isAuthenticatedGuard } from './guards/is-authenticated.guard';
 import { isNotAuthenticatedGuard } from './guards/is-not-authtenticated.guard';
 import { ModaPageComponent } from './moda-age/moda-page.component';
 import { ModauserComponent } from './modauser/modauser.component';
+import { EditComponent } from './edit/edit.component';
 
 
 
@@ -29,5 +30,6 @@ export const routes: Routes = [
   { path: 'tecuser', component: TecuserComponent, canActivate: [isAuthenticatedGuard]},
   { path: 'fincauser', component: FincauserComponent, canActivate: [isAuthenticatedGuard]},
   { path: 'comprauser', component: ComprauserComponent, canActivate: [isAuthenticatedGuard]},
-  { path: 'modauser', component: ModauserComponent, canActivate: [isAuthenticatedGuard]}
+  { path: 'modauser', component: ModauserComponent, canActivate: [isAuthenticatedGuard]},
+  {path: 'edit', component: EditComponent}
 ];

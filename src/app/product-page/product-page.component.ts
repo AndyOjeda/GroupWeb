@@ -103,7 +103,7 @@ export class ProductPageComponent implements OnInit {
   }
 
   openWhatsapp() {
-    const phoneNumber = '573008822202';
+    const phoneNumber = '192936536536';
     const imageUrl = this.dataDetail?.image;
     const message = `Hola, estoy interesad@ en el producto '${this.dataDetail?.title}'`;
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;

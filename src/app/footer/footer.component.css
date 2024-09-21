@@ -37,3 +37,19 @@ section {
     padding: 1rem 0;
   }
 }
+
+.small-gif {
+  max-width: 7.5rem;
+  width: auto;
+  vertical-align: middle;
+  margin-left: 0.5rem;
+}
+
+.section-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 1rem;
+}

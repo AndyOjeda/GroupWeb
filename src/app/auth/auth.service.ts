@@ -4,6 +4,7 @@ import { LoginUserRequest, LoginUserResponse } from "../DTO/LoginUserDTO";
 import { AuthStatus } from "./interfaces/authstatus.enum";
 import { Observable, catchError, map, of, tap, throwError } from "rxjs";
 import { CheckTokenResponse } from "./interfaces/checktoken.response";
+import { ChangePasswordRequest } from "../DTO/ChangePasswordDTO";
 
 @Injectable({
     providedIn: 'root'
@@ -68,5 +69,9 @@ export class AuthService{
       localStorage.removeItem('token');
       this._currentUser.set(null);
       this._authStatus.set(AuthStatus.notAuthenticated)
+    }
+
+    updateUserPassword(userUpdated: LoginUserRequest): Observable<void> {
+      return this.http.put<void>(`${this.baseUrl}/user/update/user`, userUpdated)
     }
 }
