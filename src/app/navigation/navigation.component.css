@@ -156,6 +156,12 @@
     width: 100%;
     margin-top: 10px;
   }
+
+  .container{
+    padding-left: 2rem;
+    margin: 0;
+  }
+
 }
 
 .small-gif {
